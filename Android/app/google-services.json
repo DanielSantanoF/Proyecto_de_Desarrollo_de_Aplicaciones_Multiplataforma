@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "763684566651",
+    "firebase_url": "https://dsantanoproyectodam.firebaseio.com",
+    "project_id": "dsantanoproyectodam",
+    "storage_bucket": "dsantanoproyectodam.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:763684566651:android:360b2a71fb9cd371dbd4de",
+        "android_client_info": {
+          "package_name": "com.dsantano.proyectodam"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "763684566651-ros6p42jsebtd7vvck1nm9pt7a67agk5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAydykHVYWMreEB_Yn35dESCse-2CjSmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "763684566651-ros6p42jsebtd7vvck1nm9pt7a67agk5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

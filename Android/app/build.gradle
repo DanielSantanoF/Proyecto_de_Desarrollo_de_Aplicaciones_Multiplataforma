@@ -23,7 +23,11 @@ android {
 
 }
 
+//GOOGLE-SERVICES
+apply plugin: 'com.google.gms.google-services'
+
 dependencies {
+    def archLifecycleVersion = '2.2.0'
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
@@ -35,4 +39,38 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    implementation 'jp.wasabeef:glide-transformations:4.0.0'
+    //Retrofit
+    implementation 'jp.co.cyberagent.android:gpuimage:2.0.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.3.1'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
+    //CardView
+    implementation 'androidx.cardview:cardview:1.0.0'
+    //App Compact
+    implementation 'androidx.appcompat:appcompat:1.0.0'
+    //Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    //Lifecycle Ccomponents
+    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+    annotationProcessor "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
+    //Room Components
+    implementation "androidx.room:room-runtime:2.2.1"
+    annotationProcessor "androidx.room:room-compiler:2.2.1"
+    androidTestImplementation "androidx.room:room-testing:2.2.1"
+    //JodaTime
+    implementation 'net.danlew:android.joda:2.10.3'
+    implementation 'com.mikhaellopez:circularimageview:4.1.1'
+    //GOOGLE-SERVICES
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.gms:google-services:4.2.0'
+    implementation 'com.google.firebase:firebase-firestore:21.2.1'
+    implementation 'com.google.firebase:firebase-auth:19.1.0'
+    implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation 'com.google.firebase:firebase-database:19.2.1'
 }
