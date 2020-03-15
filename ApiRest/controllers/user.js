@@ -71,6 +71,24 @@ let controller = {
         } catch (error) {
             res.send(500, error.message);
         }
+    },
+    getUserById : async (req, res, next) => {
+        try {
+            let result = null;
+            result = await User.find({_id: req.params.id}, {_id: 1, username: 1, email:1, roles: 1, avatar: 1, register_date: 1}).exec();
+            res.status(200).json(result);
+        } catch (error) {
+            res.send(500, error.message);
+        }
+    },
+    getMe : async (req, res, next) => {
+        try {
+            let result = null;
+            result = await User.find({_id: req.user.id}, {_id: 1, username: 1, email:1, roles: 1, avatar: 1, register_date: 1}).exec();
+            res.status(200).json(result);
+        } catch (error) {
+            res.send(500, error.message);
+        }
     }
 
 }

@@ -15,5 +15,7 @@ router.post('/login', UserController.login);
 //router.post('/register', UserController.register);
 router.post('/register', upload.single('avatar'), UserController.register);
 router.get('/users', authMiddleware.ensureAuthenticated, /*,adminMiddleware.ensureRolAdmin,*/ UserController.getUsers);
+router.get('/users/:id', authMiddleware.ensureAuthenticated, UserController.getUsers);
+router.get('/users/me', authMiddleware.ensureAuthenticated, UserController.getMe);
 
 module.exports = router
