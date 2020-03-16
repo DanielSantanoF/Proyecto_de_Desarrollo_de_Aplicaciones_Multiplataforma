@@ -6,25 +6,39 @@ export class MenuService {
 
   constructor(public translate: TranslateService) {}
 
-  getAll() {
+  getAllUser() {
     return [
       {
         link: '/',
-        label: this.translate.instant('HOME'),
+        label: 'Menú principal',
         icon: 'explore'
       },
       {
-        link: 'http://reactprimer.nyasha.me',
-        label: this.translate.instant('React Version'),
-        externalRedirect: true,
-        icon: 'bookmark'
-      },
-      {
-        link: 'http://primer.nyasha.me/docs',
-        label: this.translate.instant('DOCS'),
-        externalRedirect: true,
-        icon: 'local_library'
+        link: '/users',
+        label: 'Users',
+        icon: 'supervised_user_circle'
       }
     ];
   }
+
+  getAllAdmin() {
+    return [
+      {
+        link: '/',
+        label: 'Menú principal',
+        icon: 'explore'
+      },
+      {
+        link: '/users',
+        label: 'Users',
+        icon: 'supervised_user_circle'
+      },
+      {
+        link: '/adminUsers',
+        label: 'Gestionar usuarios',
+        icon: 'group_add'
+      }
+    ];
+  }
+
 }
