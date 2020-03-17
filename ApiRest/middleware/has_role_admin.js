@@ -3,7 +3,7 @@
 let middlewares = {
     
     ensureRolAdmin: (req,res,next)=>{
-        if(req.user.roles == 'ADMIN'){
+        if(req.user.role == 'ADMIN'){
             next();
             (req, res, next);
         } else {

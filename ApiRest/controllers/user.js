@@ -14,12 +14,16 @@ let controller = {
             } else {
                 if(req.body.password == req.body.confirmPassword && req.body.password.length >= 5 && req.body.confirmPassword.length >= 5){
                 let hash = bcrypt.hashSync(req.body.password, parseInt(process.env.BCRYPT_ROUNDS));
+                let date = new Date(req.body.dateOfBirth);
                 let user = new User({
                     username: req.body.username,
                     email: req.body.email,
+                    phone: req.body.phone,
                     name: req.body.name,
-                    roles: 'USER',
-                    password: hash
+                    role: 'USER',
+                    type_user: req.body.typeUser,
+                    password: hash,
+                    date_of_birth: date
                 });
                 if (req.file != undefined) {
                     user.avatar = {
@@ -66,7 +70,7 @@ let controller = {
     getUsers : async (req, res, next) => {
         try {
             let result = null;
-            result = await User.find({}, {_id: 1, username: 1, email:1, roles: 1, avatar: 1, register_date: 1}).exec();
+            result = await User.find({active: true}, {active: 0, register_date: 0, __v: 0}).exec();
             res.status(200).json(result);
         } catch (error) {
             res.send(500, error.message);
@@ -75,7 +79,7 @@ let controller = {
     getUserById : async (req, res, next) => {
         try {
             let result = null;
-            result = await User.find({_id: req.params.id}, {_id: 1, username: 1, email:1, roles: 1, avatar: 1, register_date: 1}).exec();
+            result = await User.find({_id: req.params.id}, {active: 0, register_date: 0, __v: 0}).exec();
             res.status(200).json(result);
         } catch (error) {
             res.send(500, error.message);
@@ -84,7 +88,7 @@ let controller = {
     getMe : async (req, res, next) => {
         try {
             let result = null;
-            result = await User.find({_id: req.user.id}, {_id: 1, username: 1, email:1, roles: 1, avatar: 1, register_date: 1}).exec();
+            result = await User.find({_id: req.user.id}, {active: 0, register_date: 0, __v: 0}).exec();
             res.status(200).json(result);
         } catch (error) {
             res.send(500, error.message);
