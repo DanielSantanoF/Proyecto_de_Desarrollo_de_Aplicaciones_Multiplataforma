@@ -7,6 +7,7 @@ const User = require('./models/user');
 //Contraseña de todos los usuarios
 let hash = bcrypt.hashSync("1234", parseInt(process.env.BCRYPT_ROUNDS));
 
+//TODO ADD DATA FOR A USER ADMIN
 let userAdmin = new User({
     _id: "5df919997853105891baf7b0",
     username: "admin",

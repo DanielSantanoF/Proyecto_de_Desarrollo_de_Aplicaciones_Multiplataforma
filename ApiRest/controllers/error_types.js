@@ -15,7 +15,7 @@ const error_types = {
         this.stack = err.stack;
         return this;
     },
-    Error400: function(msg){ //bad request
+    Error400: (msg) => { //bad request
         let err = Error.apply(this, [msg]);
         this.name = err.name = "Error400";
         this.message = err.message;
