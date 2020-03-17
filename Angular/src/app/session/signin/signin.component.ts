@@ -6,6 +6,9 @@ import {
 } from '@angular/forms';
 
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+import { UserGoogleDto } from 'src/app/models/userGoogle.dto';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-signin',
@@ -13,8 +16,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+  
   public form: FormGroup;
-  constructor(private fb: FormBuilder, private router: Router) {}
+  
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private _snackBar: MatSnackBar
+    ) {}
 
   ngOnInit() {
     this.form = this.fb.group({
@@ -24,6 +34,42 @@ export class SigninComponent implements OnInit {
   }
 
   onSubmit() {
-    this.router.navigate(['/dashboard']);
+    
   }
+
+  googleSignIn() {
+    this.authService.googleLogin().then(resp => {
+      this.authService.setLocalData(
+        resp.user.uid,
+        resp.user.displayName,
+        resp.user.email,
+        resp.user.photoURL
+      );
+      if(resp.user.email == "santano.fedan20@triana.salesianos.edu"){
+        localStorage.setItem('esAdmin', "TRUE")
+      } else {
+        localStorage.setItem('esAdmin', "FALSE")
+      }
+      this.authService.getUser().subscribe(usuarioEncontrado => {
+        if(usuarioEncontrado){
+          const dto = new UserGoogleDto( resp.user.displayName, resp.user.email, resp.user.photoURL);
+          this.authService.updateUserLogged(resp.user.uid, dto).then(resp2 => {
+            this.router.navigate(['/']);
+          }).catch(err => {
+            this._snackBar.open("Error al iniciar sesión", err);
+          });
+        } else {
+          const dto2 = new UserGoogleDto(resp.user.displayName, resp.user.email, resp.user.photoURL);
+          this.authService.saveUserLogged(resp.user.uid, dto2).then(resp3 => {
+            this.router.navigate(['/']);
+          }).catch(err => {
+            this._snackBar.open("Error al iniciar sesión", err);
+          })
+        }
+      });
+    }).catch(err =>{
+      this._snackBar.open("Error al iniciar sesión", err);
+    })
+  }
+
 }

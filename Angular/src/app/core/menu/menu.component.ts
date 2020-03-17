@@ -12,6 +12,8 @@ import {TranslateService} from '@ngx-translate/core';
 export class MenuComponent implements OnChanges, OnInit, OnDestroy {
   @Input() direction: string;
 
+  esAdmin: boolean;
+
   private langChangeSubscription!: Subscription;
   currentLang = 'en';
   menuItems = [];
@@ -22,7 +24,7 @@ export class MenuComponent implements OnChanges, OnInit, OnDestroy {
     collapseOnSelect: true,
     highlightOnSelect: true,
     rtlLayout: this.direction === 'rtl' ? true : false,
-    selectedListFontColor: '#3f51b5',
+    selectedListFontColor: '#3262a8',
   };
 
   constructor(
@@ -35,12 +37,26 @@ export class MenuComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    const menu =  this.menuService.getAll();
-    this.menuItems = menu;
+    if(localStorage.getItem('esAdmin') == "TRUE"){
+      this.esAdmin = true;
+    }
 
+    if(this.esAdmin){
+      const menu =  this.menuService.getAllAdmin();
+    this.menuItems = menu;
+    } else {
+      const updatedMenu = this.menuService.getAllUser();
+        this.menuItems = updatedMenu;
+    }
+    
     this.langChangeSubscription = this.translate.onLangChange.subscribe( () => {
-      const updatedMenu = this.menuService.getAll();
-      this.menuItems = updatedMenu;
+      if(this.esAdmin){
+        const updatedMenu = this.menuService.getAllAdmin();
+        this.menuItems = updatedMenu;
+      } else {
+        const updatedMenu = this.menuService.getAllUser();
+        this.menuItems = updatedMenu;
+      }
     });
   }
 

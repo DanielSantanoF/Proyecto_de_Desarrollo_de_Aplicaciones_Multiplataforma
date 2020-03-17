@@ -18,6 +18,13 @@ import { RouterModule } from '@angular/router';
 import { SessionRoutes } from './session.routing';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AuthService } from '../services/auth.service';
+import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/material/snack-bar';
 
 @NgModule({
   imports: [
@@ -30,7 +37,12 @@ import { SignupComponent } from './signup/signup.component';
     MatButtonModule,
     FlexLayoutModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireStorageModule,
+    MatSnackBarModule
   ],
   declarations: [
     NotFoundComponent,
@@ -39,6 +51,10 @@ import { SignupComponent } from './signup/signup.component';
     LockscreenComponent,
     SigninComponent,
     SignupComponent
+  ],
+  providers: [
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2000}},
+    AuthService
   ]
 })
 export class SessionModule {}
