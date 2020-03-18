@@ -86,7 +86,7 @@ public class RegisterActivity extends AppCompatActivity implements IDatePickerLi
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 int type = position + 1;
                 if(type == 1){
-                    typeUserSelected = "BUSCA_COMPAÑIA";
+                    typeUserSelected = "BUSCA_COMPANIA";
                 } else if(type == 2){
                     typeUserSelected = "OFRECE_ALOJAMIENTO";
                 } else if(type == 3){
@@ -101,7 +101,7 @@ public class RegisterActivity extends AppCompatActivity implements IDatePickerLi
         });
 
         ivAvatar = findViewById(R.id.imageViewUploadAvatarRegister);
-        Glide.with(this).load(R.drawable.ic_upload).transform(new CircleCrop()).into(ivAvatar);
+        Glide.with(this).load(R.drawable.ic_upload).into(ivAvatar);
 
         btnPickBirthDate = findViewById(R.id.buttonPickBirthDateRegister);
         btnDoRegister = findViewById(R.id.buttonDoRegister);
