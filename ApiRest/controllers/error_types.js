@@ -15,13 +15,6 @@ const error_types = {
         this.stack = err.stack;
         return this;
     },
-    Error400: (msg) => { //bad request
-        let err = Error.apply(this, [msg]);
-        this.name = err.name = "Error400";
-        this.message = err.message;
-        this.stack = err.stack;
-        return this;
-    },
     Error403: (msg) => { //prohibido
         let err = Error.apply(this, [msg]);
         this.name = err.name = "Error403";
@@ -42,14 +35,7 @@ const error_types = {
         this.message = err.message;
         this.stack = err.stack;
         return this;
-    },
-    undefined: (msg) => { //undefined
-        let err = Error.apply(this, [msg]);
-        this.name = err.name = "Undefined";
-        this.message = err.message;
-        this.stack = err.stack;
-        return this;
-    }
+    } 
 };
 
 module.exports = error_types;

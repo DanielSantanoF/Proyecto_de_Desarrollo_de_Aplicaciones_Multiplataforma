@@ -11,17 +11,13 @@ let middlewares = {
 
             if (err) { return next(err); }
 
-            if (!user) { return next(error_types.Error403("You are not allowed to access.")); }
+            if (!user) { return next(new error_types.Error403("You are not allowed to access.")); }
             
             req.user = user;
             next();
         })(req, res, next);
     },
-    
     errorHandler: (error, req, res, next) => {
-        //if(error instanceof error_types.undefined)
-            //res.status(400).json({error: error.message});
-        //else 
         if(error instanceof error_types.InfoError)
             res.status(200).json({error: error.message});
         else if(error instanceof error_types.Error404)

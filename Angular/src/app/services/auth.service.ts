@@ -4,7 +4,7 @@ import { auth } from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserGoogleDto } from '../models/userGoogle.dto';
 import { Users } from '../models/user.interface';
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginResponse } from '../models/loginResponse.interface';
 import { LoginDto } from '../models/login.dto';
@@ -65,12 +65,12 @@ export class AuthService {
   }
 
   apiRestSignIn(username: string, password: string): Observable<LoginResponse>{
-    const dto = new LoginDto(username, password);
-    return this.http.post<LoginResponse>(API_REST_UTL + 'api/login', 
-    { username: username,
-      password: password
-    }, 
-    httpOptions)
+    //const dto = new LoginDto(username, password);
+    //return this.http.post<LoginResponse>(API_REST_UTL + 'api/login', dto, httpOptions)
+    const params = new HttpParams()
+        .set('username', username)
+        .set('password', password)
+    return this.http.post<LoginResponse>(API_REST_UTL + 'api/login', params, httpOptions);
   }
 
 }
