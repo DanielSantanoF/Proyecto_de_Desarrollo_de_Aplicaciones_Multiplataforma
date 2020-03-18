@@ -6,10 +6,28 @@
           <form [formGroup]="form" (ngSubmit)="onSubmit()">
             <div class="text-xs-center pb-1">
               <img src="../../../assets/images/proyectodamlogo.jpg" alt="" width="200px" />
-              <p class="mat-text-muted">Inicia sesión con tu cuenta de Google</p>
+              <p class="mat-text-muted">Inicia sesión con tu cuenta</p>
+            <mat-form-field class="example-full-width">
+              <mat-label>Indique su usuario:</mat-label>
+              <input matInput [(ngModel)]="username" type="text" placeholder="Usuario"
+              name="username">
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Indique su contraseña:</mat-label>
+              <input matInput [(ngModel)]="password" type="password" placeholder="Contraseña"
+              name="password">
+            </mat-form-field>
             </div>
             <div fxLayout="column">
+              <a color="primary" mat-raised-button (click)="apirestSignIn()">Iniciar de sesión</a>
+            </div>
+            <br>
+            <div fxLayout="column">
               <a color="primary" mat-raised-button (click)="googleSignIn()">Inicio de sesión con Google</a>
+            </div>
+            <br>
+            <div fxLayout="column">
+              <a color="primary" mat-raised-button (click)="doRegister()">Registrarse</a>
             </div>
           </form>
         </mat-card-content>

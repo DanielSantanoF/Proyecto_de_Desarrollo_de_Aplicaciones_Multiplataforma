@@ -17,6 +17,9 @@ import { MatSnackBar } from '@angular/material';
 })
 export class SigninComponent implements OnInit {
   
+  username: string;
+  password: string;
+
   public form: FormGroup;
   
   constructor(
@@ -70,6 +73,23 @@ export class SigninComponent implements OnInit {
     }).catch(err =>{
       this._snackBar.open("Error al iniciar sesión", err);
     })
+  }
+
+  apirestSignIn(){
+    this.authService.apiRestSignIn(this.username, this.password).subscribe(resp => {
+      if(resp.username == "santano.fedan20" || resp.username != null){
+        localStorage.setItem('esAdmin', "TRUE")
+      } else if(resp.username != "santano.fedan20" || resp.username != null){
+        localStorage.setItem('esAdmin', "FALSE")
+      } else {
+        this._snackBar.open("Error al iniciar sesión");
+      }
+      this.router.navigate(['/']);
+    });
+  }
+
+  doRegister(){
+    
   }
 
 }

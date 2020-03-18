@@ -4,8 +4,19 @@ import { auth } from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserGoogleDto } from '../models/userGoogle.dto';
 import { Users } from '../models/user.interface';
+import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { LoginResponse } from '../models/loginResponse.interface';
+import { LoginDto } from '../models/login.dto';
 
 export const collectionNameProfesores = 'users';
+export const API_REST_UTL = 'http://localhost:3000/';
+
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-type': 'application/json'
+  })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +24,8 @@ export const collectionNameProfesores = 'users';
 export class AuthService {
 
   constructor(public afAuth: AngularFireAuth, 
-    private dbFireStore: AngularFirestore) { }
+    private dbFireStore: AngularFirestore,
+    private http: HttpClient) { }
 
   googleLogin() {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
@@ -50,6 +62,15 @@ export class AuthService {
 
   public updateUserLogged(id, dto: UserGoogleDto){
     return this.dbFireStore.collection<Users>(collectionNameProfesores).doc(id).update(dto.transformarDto());
+  }
+
+  apiRestSignIn(username: string, password: string): Observable<LoginResponse>{
+    const dto = new LoginDto(username, password);
+    return this.http.post<LoginResponse>(API_REST_UTL + 'api/login', 
+    { username: username,
+      password: password
+    }, 
+    httpOptions)
   }
 
 }
