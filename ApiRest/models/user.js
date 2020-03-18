@@ -15,7 +15,7 @@ const userSchema = new mongoose.Schema({
     phone: {type: String},
     name: {type: String},
     role: {type: String, enum: ['USER', 'ADMIN']},
-    type_user: {type: String, enum: ['BUSCA_COMPAÑIA', 'OFRECE_ALOJAMIENTO', 'JOVEN']},
+    type_user: {type: String, enum: ['BUSCA_COMPANIA', 'OFRECE_ALOJAMIENTO', 'JOVEN']},
     password: {type: String},
     avatar: imgSchema,
     date_of_birth: {type: Date},

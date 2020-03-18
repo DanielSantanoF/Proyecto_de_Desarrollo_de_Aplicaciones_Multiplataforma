@@ -3,4 +3,17 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="btn_register">Registrarse</string>
+    <string name="btn_login">Iniciar sesión</string>
+    <string name="hint_username">Usuario</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="username_empty">Es necesario el usuario</string>
+    <string name="password_empty">Es necesaria la contraseña</string>
+    <string name="error_in_the_connection">Error en la conexión</string>
+    <string name="hint_email">Correo electronico</string>
+    <string name="hint_confirm_password">Repita la contraseña</string>
+    <string name="hint_name">Nombre</string>
+    <string name="hint_phone">Número de teléfono</string>
+    <string name="btn_birth_date">Fecha de nacimiento</string>
+    <string name="txt_type_user_register">Seleccione que tipo de usuario es:</string>
 </resources>
