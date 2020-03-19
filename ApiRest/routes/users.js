@@ -15,6 +15,7 @@ router.post('/login', UserController.login);
 router.post('/register', upload.single('avatar'), UserController.register);
 router.get('/users', authMiddleware.ensureAuthenticated, /*,adminMiddleware.ensureRolAdmin,*/ UserController.getUsers);
 router.get('/users/:id', authMiddleware.ensureAuthenticated, UserController.getUsers);
+router.delete('/users/:id', authMiddleware.ensureAuthenticated, UserController.deleteUser);
 router.get('/users/me', authMiddleware.ensureAuthenticated, UserController.getMe);
 
 module.exports = router

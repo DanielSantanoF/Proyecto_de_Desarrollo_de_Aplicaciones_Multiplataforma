@@ -93,7 +93,15 @@ let controller = {
         } catch (error) {
             res.send(500, error.message);
         }
-    }
+    },
+    deleteUser: (req, res, next) => {
+        User.findByIdAndDelete(req.params.id)
+            .exec()
+            .then(res.send(204))
+            .catch(err => {
+                next(new ErrorHandler(404, "User not found"));
+            });
+    },
 
 }
 
