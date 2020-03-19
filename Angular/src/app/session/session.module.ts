@@ -13,6 +13,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { ForgotComponent } from './forgot/forgot.component';
 import { LockscreenComponent } from './lockscreen/lockscreen.component';
 import { NgModule } from '@angular/core';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { SessionRoutes } from './session.routing';
@@ -42,7 +43,8 @@ import {MatSnackBarModule, MAT_SNACK_BAR_DEFAULT_OPTIONS} from '@angular/materia
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxDatatableModule
   ],
   declarations: [
     NotFoundComponent,

@@ -3,14 +3,14 @@
 const bcrypt    = require('bcryptjs');
 const passport  = require('passport');
 const jwt       = require('jsonwebtoken');
-const error_types = require('./error_types');
+const { handleError, ErrorHandler } = require('./error');
 const User = require('../models/user');
 
 let controller = {
     register: (req, res, next) => {
         User.find({username: req.username}, (err, result) => {
            if (result.username != null) { 
-                next(new error_types.Error400("User already exists"));
+                next(new ErrorHandler(400, "User already exists"));
             } else {
                 if(req.body.password == req.body.confirmPassword && req.body.password.length >= 5 && req.body.confirmPassword.length >= 5){
                 let hash = bcrypt.hashSync(req.body.password, parseInt(process.env.BCRYPT_ROUNDS));
@@ -33,7 +33,7 @@ let controller = {
                   }
 
                 user.save((err, user) => {                    
-                    if (err) next(new error_types.Error400(err.message));
+                    if (err) next(new ErrorHandler(400, err.message));
                     res.status(201).json({  
                         id : user.id,
                         name : user.name,
@@ -42,7 +42,7 @@ let controller = {
                     });
                 });
                 } else {
-                    next(new error_types.Error400("Password length less than 5 or passwords not matching Bad Request"));
+                    next(new ErrorHandler(400, "Password length less than 5 or passwords not matching Bad Request"));
                 }
             
             }
@@ -51,7 +51,7 @@ let controller = {
     login: (req, res, next) => {
         passport.authenticate("local", {session: false}, (error, user) => {
             if (error || !user) {
-                next(new error_types.Error404("username or password not correct."))
+                next(new ErrorHandler(404, "username or password not correct."));
             } else {
                 const payload = {
                     sub: user.id,

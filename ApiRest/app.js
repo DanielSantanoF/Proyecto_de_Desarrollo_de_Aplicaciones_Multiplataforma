@@ -10,6 +10,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const bcrypt = require('bcryptjs');
 const authMiddleware = require('./middleware/auth');
+const { handleError } = require('./controllers/error.js');
 
 const User = require('./models/user');
 const user_routes = require('./routes/users')
@@ -69,7 +70,9 @@ app.use(passport.initialize())
 
 app.use('/api/', user_routes);
 
-app.use(authMiddleware.errorHandler);
+app.use((err, req, res, next) => {
+    handleError(err, res);
+  });
 app.use(authMiddleware.notFoundHandler);
 
 module.exports = app

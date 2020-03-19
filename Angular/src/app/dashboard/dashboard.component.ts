@@ -14,7 +14,7 @@ export class DashboardComponent implements OnInit{
     private _snackBar: MatSnackBar) { }
 
   ngOnInit(){
-    if (localStorage.getItem('uid') || localStorage.getItem('photoURL')) {
+    if (localStorage.getItem('token') || localStorage.getItem('role')) {
     } else {
       this.router.navigate(['/session/signin']);
     }

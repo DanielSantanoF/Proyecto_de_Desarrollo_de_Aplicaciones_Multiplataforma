@@ -34,6 +34,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from 'src/environments/environment';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
+import { UsuariosListadoComponent } from './usuarios-listado/usuarios-listado.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 
 
@@ -71,9 +73,10 @@ import { AuthService } from '../services/auth.service';
     MatInputModule,
     MatCheckboxModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatPaginatorModule
   ],
-  declarations: [DashboardComponent],
+  declarations: [DashboardComponent, UsuariosListadoComponent],
   entryComponents: [
     //LOS DIALOG
   ],

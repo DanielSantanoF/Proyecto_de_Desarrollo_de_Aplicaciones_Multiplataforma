@@ -3,7 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { UserGoogleDto } from '../models/userGoogle.dto';
-import { Users } from '../models/user.interface';
+import { UsersFirebase } from '../models/userFirebase.interface';
 import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { LoginResponse } from '../models/loginResponse.interface';
@@ -53,24 +53,29 @@ export class AuthService {
 
   public getUser(){
     const uid = localStorage.getItem('uid');
-    return this.dbFireStore.collection(collectionNameProfesores).doc<Users>(uid).valueChanges();
+    return this.dbFireStore.collection(collectionNameProfesores).doc<UsersFirebase>(uid).valueChanges();
   }
 
   public saveUserLogged(id, dto: UserGoogleDto){
-    return this.dbFireStore.collection<Users>(collectionNameProfesores).doc(id).set(dto.transformarDto());
+    return this.dbFireStore.collection<UsersFirebase>(collectionNameProfesores).doc(id).set(dto.transformarDto());
   }
 
   public updateUserLogged(id, dto: UserGoogleDto){
-    return this.dbFireStore.collection<Users>(collectionNameProfesores).doc(id).update(dto.transformarDto());
+    return this.dbFireStore.collection<UsersFirebase>(collectionNameProfesores).doc(id).update(dto.transformarDto());
   }
 
   apiRestSignIn(username: string, password: string): Observable<LoginResponse>{
-    //const dto = new LoginDto(username, password);
-    //return this.http.post<LoginResponse>(API_REST_UTL + 'api/login', dto, httpOptions)
-    const params = new HttpParams()
-        .set('username', username)
-        .set('password', password)
-    return this.http.post<LoginResponse>(API_REST_UTL + 'api/login', params, httpOptions);
+    const dto = new LoginDto(username, password);
+    return this.http.post<LoginResponse>(API_REST_UTL + 'api/login', dto, httpOptions)
+  }
+
+  getHttpOptionsWithToken(){
+    const httpOptionsWithToken = {
+      headers: new HttpHeaders({
+        'Content-type': 'application/json'
+        ,'Authorization': 'Bearer '+ localStorage.getItem('token')
+    })};
+    return httpOptionsWithToken;
   }
 
 }

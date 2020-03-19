@@ -49,9 +49,9 @@ export class SigninComponent implements OnInit {
         resp.user.photoURL
       );
       if(resp.user.email == "santano.fedan20@triana.salesianos.edu"){
-        localStorage.setItem('esAdmin', "TRUE")
+        localStorage.setItem('role', "TRUE")
       } else {
-        localStorage.setItem('esAdmin', "FALSE")
+        localStorage.setItem('role', "FALSE")
       }
       this.authService.getUser().subscribe(usuarioEncontrado => {
         if(usuarioEncontrado){
@@ -77,13 +77,9 @@ export class SigninComponent implements OnInit {
 
   apirestSignIn(){
     this.authService.apiRestSignIn(this.username, this.password).subscribe(resp => {
-      if(resp.username == "santano.fedan20" || resp.username != null){
-        localStorage.setItem('esAdmin', "TRUE")
-      } else if(resp.username != "santano.fedan20" || resp.username != null){
-        localStorage.setItem('esAdmin', "FALSE")
-      } else {
-        this._snackBar.open("Error al iniciar sesión");
-      }
+      localStorage.setItem('token', resp.token)
+      localStorage.setItem('username', resp.username)
+      localStorage.setItem('role', resp.role)
       this.router.navigate(['/']);
     });
   }
