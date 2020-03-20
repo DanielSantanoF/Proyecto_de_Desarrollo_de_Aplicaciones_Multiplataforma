@@ -15,6 +15,7 @@ const { handleError } = require('./controllers/error.js');
 const User = require('./models/user');
 const user_routes = require('./routes/users')
 const services_routes = require('./routes/services')
+const location_routes = require('./routes/location')
 
 //Insert example data
 //require('./example_data');
@@ -22,6 +23,7 @@ const services_routes = require('./routes/services')
 require('dotenv').config();
 
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 mongoose.connect(process.env.MONGODB_URI, {useNewUrlParser: true});
 
 let db = mongoose.connection;
@@ -71,6 +73,7 @@ app.use(passport.initialize())
 
 app.use('/api/', user_routes);
 app.use('/api/', services_routes);
+app.use('/api/', location_routes);
 
 app.use((err, req, res, next) => {
     handleError(err, res);

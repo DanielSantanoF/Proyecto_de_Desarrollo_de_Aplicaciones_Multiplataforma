@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
     register_date: {type: Date, default: Date.now},
     validated: {type: Boolean, default: false},
     active: {type: Boolean, default: true},
-    location_offered: { type: Schema.Types.ObjectId, ref: 'LocationOffered' },
+    location_offered: { type: Schema.Types.ObjectId, ref: 'LocationOffered', default: null },
     living_with: { type: Schema.Types.ObjectId, ref: 'User' },
     favorite_users: [{ type: Schema.Types.ObjectId, ref: 'User' }]
 });
