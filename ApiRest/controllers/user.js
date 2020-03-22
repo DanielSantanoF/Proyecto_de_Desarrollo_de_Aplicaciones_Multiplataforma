@@ -5,7 +5,6 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const { handleError, ErrorHandler } = require('./error');
 const User = require('../models/user');
-const _ = require('lodash')
 
 let controller = {
     register: (req, res, next) => {
@@ -146,50 +145,18 @@ let controller = {
             .catch(err => next(new ErrorHandler(500, err.message)))
     },
     deleteFavorite: (req, res, next) => {
-        /*User.update(req.user.id, {$pull: {favorite_users: req.body.idUser}})
-            .exec()
-            .then(x => res.status(204))
-            .catch(err => next(new ErrorHandler(500, err.message)))*/
-        /*User.update({ '_id': req.user.id }, { $pull: { favorite_users: req.params.id } },
-            (err, data) => {
-                if (err) {
-                    next(new ErrorHandler(500, err.message));
-                } else {
-                    res.status(204)
+        User.findByIdAndUpdate(req.user.id, { 
+            $pull: { 
+                favorite_users: req.params.id 
+                } 
+            },(err, user)=> {
+              if(err){
+                next(new ErrorHandler(500, err.message))
                 }
-            }
-        );*/
-        /*User.update({ '_id': req.user.id }, { $pull: { favorite_users: req.params.id } })
-        .then(x => res.status(204))
-        .catch(err => next(new ErrorHandler(500, err.message)));
-        res.status(204);*/
-        User.findById(req.user.id)
-            .then((x) => {
-                console.log(x.favorite_users) 
-                console.log(req.params.id) 
-                _.pull(x.favorite_users, req.params.id);
-                /*user.save((err, user) => {
-                    if (err) next(new ErrorHandler(400, err.message));
-                    res.status(204);
-                })*/
-                console.log(x.favorite_users)
-                return x.save();
+                return user;
             })
+            .then((u) => res.status(200).json(u))
             .catch(err => next(new ErrorHandler(500, err.message)));
-        /*User.findById(req.user.id)
-            .then((user) => {
-                user.favorite_users.pull({"_id": req.params.id});
-                res.status(204);
-            })
-            .catch(err => next(new ErrorHandler(500, err.message)));*/
-            /*User.findByIdAndUpdate(
-                req.user.id,
-               { $pull: { favorite_users: req.params.id } },function(err, user){
-                  if(err){
-                    next(new ErrorHandler(500, err.message))
-                    }
-                    res.status(204);
-                });*/
     },
     deleteUser: (req, res, next) => {
         User.findByIdAndDelete(req.params.id)
@@ -283,7 +250,10 @@ let controller = {
                             }
                         });
                 }
-            });
+                return userUpdated;
+            })
+            .then((u) => res.status(200).json(u))
+            .catch(err => next(new ErrorHandler(500, err.message)));
     },
 
 }

@@ -16,13 +16,13 @@ router.post('/login', UserController.login);
 router.post('/register', upload.single('avatar'), UserController.register);
 
 //Users
+router.get('/users/me', authMiddleware.ensureAuthenticated, UserController.getMe);
+router.delete('/users/me', authMiddleware.ensureAuthenticated, UserController.deleteMe);
+router.put('/users/me', authMiddleware.ensureAuthenticated, UserController.updateMe);
 router.get('/users', authMiddleware.ensureAuthenticated, UserController.getUsers);
 router.get('/users/:id', authMiddleware.ensureAuthenticated, UserController.getUserById);
 router.put('/users/:id', authMiddleware.ensureAuthenticated, adminMiddleware.ensureRolAdmin, UserController.updateUser);
 router.delete('/users/:id', authMiddleware.ensureAuthenticated, adminMiddleware.ensureRolAdmin, UserController.deleteUser);
-router.get('/users/me', authMiddleware.ensureAuthenticated, UserController.getMe);
-router.delete('/users/me', authMiddleware.ensureAuthenticated, UserController.deleteMe);
-router.put('/users/me', authMiddleware.ensureAuthenticated, UserController.updateMe);
 //Favorite users
 router.post('/users/me/favorites', authMiddleware.ensureAuthenticated, UserController.postNewFavorite);
 router.get('/users/me/favorites', authMiddleware.ensureAuthenticated, UserController.getMyFavorites);
