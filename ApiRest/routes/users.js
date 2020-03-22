@@ -26,7 +26,7 @@ router.put('/users/me', authMiddleware.ensureAuthenticated, UserController.updat
 //Favorite users
 router.post('/users/me/favorites', authMiddleware.ensureAuthenticated, UserController.postNewFavorite);
 router.get('/users/me/favorites', authMiddleware.ensureAuthenticated, UserController.getMyFavorites);
-router.delete('/users/me/favorites', authMiddleware.ensureAuthenticated, UserController.deleteFavorite);
+router.delete('/users/me/favorites/:id', authMiddleware.ensureAuthenticated, UserController.deleteFavorite);
 //Two users contact and start to living together old/young field living_with on User model
 router.put('/users/me/livingWith', authMiddleware.ensureAuthenticated, UserController.updateLivingWith);
 router.delete('/users/me/livingWith', authMiddleware.ensureAuthenticated, UserController.deleteLivingWith);
