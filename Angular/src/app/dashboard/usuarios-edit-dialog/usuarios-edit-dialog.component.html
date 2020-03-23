@@ -1,0 +1,47 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Editar usuario</mat-card-title>
+      </mat-card-header>
+
+      <form class="example-form">
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="username" type="text"  placeholder="Nombre de usuario" name="username">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="email" type="text"  placeholder="Email" name="email">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="phone" type="text"  placeholder="Número de teléfono" name="phone">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="name" type="text"  placeholder="Nombre" name="name">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <label>Tipo de usuario:</label><br/>
+            <mat-select [(ngModel)]="typeUser" name="typeUser">
+                <mat-option value="BUSCA_COMPANIA"><p>Busca compañía</p></mat-option>
+                <mat-option value="OFRECE_ALOJAMIENTO"><p>Ofrece alojamiento</p></mat-option>
+                <mat-option value="JOVEN"><p>Ofrece compañía Joven</p></mat-option>
+                <mat-option value="OFRECE_SERVICIO"><p>Ofrece servicio</p></mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="dateOfBirth" type="text"  placeholder="Fecha de nacimiento" name="dateSelected">
+          </mat-form-field>
+        </mat-card-content>
+    </form> 
+
+        <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="editUser()" >Editar</button>
+        <button mat-button (click)="cerrarDialog()">Cancelar</button>
+      </div>
+      
+    </mat-card>
+</div>

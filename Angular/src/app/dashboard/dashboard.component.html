@@ -1,3 +1,71 @@
-<div fxLayout='column'>
-  <p>DASHBOARD</p>
+<img src="../../assets/images/proyectodamlogo.jpg" class="logo">
+<h1 class="nombreLogo">AgesTogether</h1>
+<br>
+
+<div fxLayout="row wrap" fxLayoutAlign="start start" fxLayout.xs="column" class="Container" fxLayoutGap="5px">
+
+  <div fxFlex="1 1 calc(49.5% - 5px)" fxFlex.lt-lg="1 1 calc(50% - 5px)">
+    <a [routerLink]="['/users']">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ usuarios.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ usuarios.descripcion }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-icon>{{ usuarios.icono }}</mat-icon>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </a>
+  </div>
+
+  <div fxFlex="1 1 calc(49.5% - 5px)" fxFlex.lt-lg="1 1 calc(50% - 5px)">
+    <a [routerLink]="['/adminUsers']">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ administrarUsuarios.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ administrarUsuarios.descripcion }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-icon>{{ administrarUsuarios.icono }}</mat-icon>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </a>
+  </div>
+
+  <div fxFlex="1 1 calc(49.5% - 5px)" fxFlex.lt-lg="1 1 calc(50% - 5px)">
+    <a [routerLink]="['/services']">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ servicios.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ servicios.descripcion }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-icon>{{ servicios.icono }}</mat-icon>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </a>
+  </div>
+
+  <div fxFlex="1 1 calc(49.5% - 5px)" fxFlex.lt-lg="1 1 calc(50% - 5px)">
+    <a [routerLink]="['/locations']">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ localizaciones.nombre }}</mat-card-title>
+          <mat-card-subtitle>{{ localizaciones.descripcion }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-icon>{{ localizaciones.icono }}</mat-icon>
+        </mat-card-content>
+        <mat-card-actions>
+        </mat-card-actions>
+      </mat-card>
+    </a>
+  </div>
+
 </div>

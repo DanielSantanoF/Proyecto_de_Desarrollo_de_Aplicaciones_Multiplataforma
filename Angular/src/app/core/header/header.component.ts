@@ -15,14 +15,14 @@ export class HeaderComponent implements OnInit {
   @Output()
   toggleNotificationSidenav = new EventEmitter<void>();
 
-  photoUsuarioLogueado: string;
+  username: string;
 
   constructor(private authService: AuthService,
     private router: Router,
     private _snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    this.photoUsuarioLogueado = this.authService.getLocalData('photo');
+    this.username = this.authService.getLocalData('username');
   }
 
   signOut(){

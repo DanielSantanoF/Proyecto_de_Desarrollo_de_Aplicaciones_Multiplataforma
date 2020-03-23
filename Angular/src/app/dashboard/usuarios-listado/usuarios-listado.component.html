@@ -1,4 +1,10 @@
 <div class="mat-elevation-z8">
+
+  <mat-form-field>
+    <mat-label>Filtro</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar">
+  </mat-form-field>
+
     <table mat-table [dataSource]="dataSource">
 
       <ng-container matColumnDef="name">
@@ -24,10 +30,12 @@
       <ng-container matColumnDef="acciones">
         <th mat-header-cell *matHeaderCellDef> Acciones </th>
         <td mat-cell *matCellDef="let element">
-          <button mat-icon-button aria-label="Editar usuario" (click)="deleteUser()">
+          <button mat-icon-button aria-label="Editar usuario" (click)="editUser(element)">
             <mat-icon>edit</mat-icon></button>
-          <button mat-icon-button aria-label="Eliminar usuario" (click)="deleteUser()">
+          <button mat-icon-button aria-label="Eliminar usuario" (click)="deleteUser(element._id)">
             <mat-icon>delete</mat-icon></button>
+          <button mat-icon-button aria-label="Reiniciar contraseña" (click)="resetPassword(element._id)">
+            <mat-icon>lock_open</mat-icon></button>
       </td>
       </ng-container>
   

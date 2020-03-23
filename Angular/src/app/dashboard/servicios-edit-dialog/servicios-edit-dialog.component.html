@@ -1,0 +1,38 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Editar servicio</mat-card-title>
+      </mat-card-header>
+
+      <form class="example-form">
+        <mat-card-content>
+
+          <mat-form-field class="example-full-width">
+            <label>Tipo de servicio:</label><br/>
+            <mat-select [(ngModel)]="typeService" name="typeService">
+                <mat-option value="HACER_COMPRA"><p>Hacer la compra</p></mat-option>
+                <mat-option value="TRANSPORTE"><p>Transporte</p></mat-option>
+                <mat-option value="COCINAR"><p>Cocinar</p></mat-option>
+                <mat-option value="REPARACIONES"><p>Reparaciones</p></mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="title" type="text"  placeholder="Titulo" name="title">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="description" type="text"  placeholder="Descripción" name="description">
+          </mat-form-field>
+
+        </mat-card-content>
+    </form> 
+
+        <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="editService()" >Editar</button>
+        <button mat-button (click)="cerrarDialog()">Cancelar</button>
+      </div>
+      
+    </mat-card>
+</div>
+

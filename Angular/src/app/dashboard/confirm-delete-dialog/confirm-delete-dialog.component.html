@@ -1,0 +1,12 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>{{title}}</mat-card-title>
+      </mat-card-header>
+        <div mat-dialog-actions>
+        <button mat-raised-button color="warn" class="btn-block" (click)="confirmDelete()" >Eliminar</button>
+        <button mat-button (click)="cerrarDialog()">Cancelar</button>
+      </div>
+      
+    </mat-card>
+</div>

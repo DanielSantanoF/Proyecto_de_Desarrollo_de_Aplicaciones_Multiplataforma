@@ -15,8 +15,9 @@
   <button (click)="fullScreenToggle()" mat-icon-button>
     <mat-icon style="color: white;">fullscreen</mat-icon>
   </button>
+  <h1 style="color: white;">{{username}}</h1>
   <button [matMenuTriggerFor]="user" mat-icon-button class="ml-xs">
-    <img [src]="photoUsuarioLogueado" width="32px" />
+    <mat-icon style="color: white;">menu</mat-icon>
   </button>
   <mat-menu #user="matMenu" x-position="before">
     <button mat-menu-item (click)="signOut()">

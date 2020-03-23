@@ -39,6 +39,12 @@ passport.use(new LocalStrategy((username, password, done) => {
         if(user == null){
             return done(null, false);
         }
+        if(user.validated == false){
+            return done(null, false);
+        }
+        if(user.active == false){
+            return done(null, false);
+        }
         if (!bcrypt.compareSync(password, user.password)) {
             return done(null, false);
         }

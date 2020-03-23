@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatDialog, MatSnackBar } from '@angular/material';
+import { MenuDto } from '../models/Menu.dto';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,6 +10,11 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 })
 export class DashboardComponent implements OnInit{
 
+  usuarios = new MenuDto("supervised_user_circle", "Usuarios", "Listado de usuarios");
+  administrarUsuarios = new MenuDto("verified_user", "Administrar usuarios", "Validación y activación");
+  servicios = new MenuDto("room_service", "Servicios", "Listado de servicios");
+  localizaciones = new MenuDto("map", "Localizaciones", "Listado de localizaciones");
+  
   constructor(private router: Router,
     public dialog: MatDialog,
     private _snackBar: MatSnackBar) { }

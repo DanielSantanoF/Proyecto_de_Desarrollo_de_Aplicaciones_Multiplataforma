@@ -1,0 +1,40 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>Editar localización</mat-card-title>
+      </mat-card-header>
+
+      <form class="example-form">
+        <mat-card-content>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="country" type="text"  placeholder="País" name="country">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="isoCode" type="text"  placeholder="Código ISO" name="isoCode">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="city" type="text"  placeholder="Ciudad" name="city">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="street" type="text"  placeholder="Calle" name="street">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput [(ngModel)]="postalCode" type="text"  placeholder="Código postal" name="postalCode">
+          </mat-form-field>
+
+        </mat-card-content>
+    </form> 
+
+        <div mat-dialog-actions>
+        <button mat-raised-button color="primary" (click)="editLocation()" >Editar</button>
+        <button mat-button (click)="cerrarDialog()">Cancelar</button>
+      </div>
+      
+    </mat-card>
+</div>
+

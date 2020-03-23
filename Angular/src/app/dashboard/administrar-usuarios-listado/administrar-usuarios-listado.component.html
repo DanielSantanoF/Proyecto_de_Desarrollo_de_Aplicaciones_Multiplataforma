@@ -1,0 +1,48 @@
+<div class="mat-elevation-z8">
+
+    <mat-form-field>
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar">
+    </mat-form-field>
+  
+      <table mat-table [dataSource]="dataSource">
+  
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="validated">
+          <th mat-header-cell *matHeaderCellDef> Validado </th>
+          <td mat-cell *matCellDef="let element"> {{element.validated ? 'Si' : 'No'}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="active">
+          <th mat-header-cell *matHeaderCellDef> Activo </th>
+          <td mat-cell *matCellDef="let element"> {{element.active ? 'Si' : 'No'}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="accionesValidated">
+          <th mat-header-cell *matHeaderCellDef> Acciones Validación </th>
+          <td mat-cell *matCellDef="let element">
+            <button *ngIf="element.validated" mat-raised-button color="warn" aria-label="Desvalidar usuario" (click)="putValidatedUser(element._id, false)">Desvalidar</button>
+            <button *ngIf="!element.validated" mat-raised-button color="primary" aria-label="Validar usuario" (click)="putValidatedUser(element._id, true)">Validar</button>
+        </td>
+        </ng-container>
+
+        <ng-container matColumnDef="accionesActivate">
+            <th mat-header-cell *matHeaderCellDef> Acciones Activación</th>
+            <td mat-cell *matCellDef="let element">
+              <button *ngIf="element.active" mat-raised-button color="warn" aria-label="Desactivar usuario" (click)="putActiveUser(element._id, false)">Desactivar</button>
+              <button *ngIf="!element.active" mat-raised-button color="primary" aria-label="Activar usuario" (click)="putActiveUser(element._id, true)">Activar</button>
+          </td>
+          </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+    
+  

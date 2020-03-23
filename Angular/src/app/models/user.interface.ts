@@ -1,9 +1,9 @@
 import { Avatar } from "./avatar.interface";
-import { LocationOffered } from "./locationOffered.interaface";
 
 export interface UserApiRest {
     validated: boolean;
-    location_offered: LocationOffered;
+    location_offered: string;
+    favorite_users: string[];
     _id: string;
     username: string;
     email: string;

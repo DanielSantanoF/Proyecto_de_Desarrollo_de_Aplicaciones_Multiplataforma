@@ -51,7 +51,7 @@ let controller = {
     login: (req, res, next) => {
         passport.authenticate("local", { session: false }, (error, user) => {
             if (error || !user) {
-                next(new ErrorHandler(404, "username or password not correct."));
+                next(new ErrorHandler(404, "Error can be username or password not correct, not validated user or not active user"));
             } else {
                 const payload = {
                     sub: user.id,
@@ -301,6 +301,92 @@ let controller = {
             .then((u) => res.status(200).json(u))
             .catch(err => next(new ErrorHandler(500, err.message)));
     },
+    updatePassword: (req, res, next) => {
+        if (req.body.password == req.body.confirmPassword && req.body.password.length >= 5 && req.body.confirmPassword.length >= 5) {
+            let hash = bcrypt.hashSync(req.body.password, parseInt(process.env.BCRYPT_ROUNDS));
+            User.findByIdAndUpdate(req.user.id,
+                {
+                    $set: {
+                        password: hash
+                    }
+                }, { new: true }, (err, userUpdated) => {
+                    if(err) new ErrorHandler(500, err.message);
+                    if (userUpdated == null) {
+                        next(new ErrorHandler(404, "User not found"));
+                    }
+                    else {
+                        User.findById(userUpdated._id)
+                        .exec()
+                        .then(x => res.status(200).json(x))
+                        .catch(err => next(new ErrorHandler(500, err.message)))
+                    }
+                });
+        } else {
+            next(new ErrorHandler(400, "Password length less than 5 or passwords not matching Bad Request"));
+        }
+    },
+    updatePasswordOfUserById: (req, res, next) => {
+        if (req.body.password == req.body.confirmPassword && req.body.password.length >= 5 && req.body.confirmPassword.length >= 5) {
+            let hash = bcrypt.hashSync(req.body.password, parseInt(process.env.BCRYPT_ROUNDS));
+            User.findByIdAndUpdate(req.params.id,
+                {
+                    $set: {
+                        password: hash
+                    }
+                }, { new: true }, (err, userUpdated) => {
+                    if(err) new ErrorHandler(500, err.message);
+                    if (userUpdated == null) {
+                        next(new ErrorHandler(404, "User not found"));
+                    }
+                    else {
+                        User.findById(userUpdated._id)
+                        .exec()
+                        .then(x => res.status(200).json(x))
+                        .catch(err => next(new ErrorHandler(500, err.message)))
+                    }
+                });
+        } else {
+            next(new ErrorHandler(400, "Password length less than 5 or passwords not matching Bad Request"));
+        }
+    },
+    updateValidated: (req, res, next) => {
+        User.findByIdAndUpdate(req.params.id,
+            {
+                $set: {
+                    validated: req.body.validated
+                }
+            }, { new: true }, (err, userUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
+                if (userUpdated == null) {
+                    next(new ErrorHandler(404, "User not found"));
+                }
+                else {
+                    User.findById(userUpdated._id)
+                    .exec()
+                    .then(x => res.status(200).json(x))
+                    .catch(err => next(new ErrorHandler(500, err.message)))
+                }
+            });
+    },
+    updateActive: (req, res, next) => {
+        User.findByIdAndUpdate(req.params.id,
+            {
+                $set: {
+                    active: req.body.active
+                }
+            }, { new: true }, (err, userUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
+                if (userUpdated == null) {
+                    next(new ErrorHandler(404, "User not found"));
+                }
+                else {
+                    User.findById(userUpdated._id)
+                    .exec()
+                    .then(x => res.status(200).json(x))
+                    .catch(err => next(new ErrorHandler(500, err.message)))
+                }
+            });
+    }
 
 }
 

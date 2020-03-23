@@ -1,0 +1,42 @@
+<div class="mat-elevation-z8">
+
+    <mat-form-field>
+      <mat-label>Filtro</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Filtrar">
+    </mat-form-field>
+  
+      <table mat-table [dataSource]="dataSource">
+  
+        <ng-container matColumnDef="title">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="typeService">
+          <th mat-header-cell *matHeaderCellDef> Tipo de Servicio </th>
+          <td mat-cell *matCellDef="let element"> {{element.type_service}} </td>
+        </ng-container>
+    
+        <ng-container matColumnDef="available">
+          <th mat-header-cell *matHeaderCellDef> Disponible </th>
+          <td mat-cell *matCellDef="let element"> {{element.available ? 'Si' : 'No'}} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef> Acciones </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-icon-button aria-label="Editar servicio" (click)="editService(element)">
+              <mat-icon>edit</mat-icon></button>
+            <button mat-icon-button aria-label="Eliminar servicio" (click)="deleteService(element._id)">
+              <mat-icon>delete</mat-icon></button>
+        </td>
+        </ng-container>
+    
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    
+      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+    
+  

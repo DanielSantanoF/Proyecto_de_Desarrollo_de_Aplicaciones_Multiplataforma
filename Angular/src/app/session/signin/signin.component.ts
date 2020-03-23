@@ -84,8 +84,4 @@ export class SigninComponent implements OnInit {
     });
   }
 
-  doRegister(){
-    
-  }
-
 }

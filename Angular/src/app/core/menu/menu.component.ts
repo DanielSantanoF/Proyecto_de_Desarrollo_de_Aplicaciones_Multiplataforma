@@ -37,26 +37,14 @@ export class MenuComponent implements OnChanges, OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    if(localStorage.getItem('esAdmin') == "TRUE"){
-      this.esAdmin = true;
-    }
-
-    if(this.esAdmin){
-      const menu =  this.menuService.getAllAdmin();
+    const menu =  this.menuService.getAllAdmin();
     this.menuItems = menu;
-    } else {
-      const updatedMenu = this.menuService.getAllUser();
-        this.menuItems = updatedMenu;
-    }
+    
     
     this.langChangeSubscription = this.translate.onLangChange.subscribe( () => {
-      if(this.esAdmin){
         const updatedMenu = this.menuService.getAllAdmin();
         this.menuItems = updatedMenu;
-      } else {
-        const updatedMenu = this.menuService.getAllUser();
-        this.menuItems = updatedMenu;
-      }
+      
     });
   }
 

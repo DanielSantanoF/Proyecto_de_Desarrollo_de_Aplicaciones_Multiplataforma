@@ -36,7 +36,9 @@ export class AuthService {
     localStorage.removeItem('nombre');
     localStorage.removeItem('email');
     localStorage.removeItem('photo');
-    localStorage.removeItem('es_Profesor');
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
     return this.afAuth.auth.signOut();
   }
 
