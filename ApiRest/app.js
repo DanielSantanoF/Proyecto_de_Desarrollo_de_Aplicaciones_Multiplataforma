@@ -36,6 +36,9 @@ passport.use(new LocalStrategy((username, password, done) => {
     let busqueda = (username.includes('@')) ? { email: username } : { username: username };
     User.findOne(busqueda, (err, user) => {
         if (err) return done(null, false);
+        if(user == null){
+            return done(null, false);
+        }
         if (!bcrypt.compareSync(password, user.password)) {
             return done(null, false);
         }

@@ -31,6 +31,7 @@ let controller = {
                                 location_offered: location.id
                             }
                         }, { new: true }, (err, userUpdated) => {
+                            if(err) new ErrorHandler(500, err.message);
                             if (userUpdated == null) {
                                 next(new ErrorHandler(404, "User not found"));
                             }
@@ -61,6 +62,7 @@ let controller = {
 
                 }
             }, { new: true }, (err, locationUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
                 if (locationUpdated == null) {
                     next(new ErrorHandler(404, "Location not found"));
                 }
@@ -74,23 +76,22 @@ let controller = {
             });
     },
     deleteLocation: (req, res, next) => {
-        LocationOffered.findByIdAndDelete(req.params.id)
-            .exec()
-            .then(x => {
-                User.update({ location_offered: req.params.id },
-                    {
-                        $unset: {
-                            location_offered: 1
-                        }
-                    }, { new: true }, (err, userUpdated) => {
-                        if (err) {
-                            next(new ErrorHandler(500, err.message));
-                        } else {
-                            res.status(204);
-                        }
-                    });
-            })
-            .catch(err => next(new ErrorHandler(404, "Location not found")));
+        User.update({ location_offered: req.params.id },
+            {
+                $unset: {
+                    location_offered: 1
+                }
+            }, { new: true }, (err, userUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
+                if (userUpdated == null) {
+                    next(new ErrorHandler(500, err.message));
+                } else {
+                    LocationOffered.findByIdAndDelete(req.params.id)
+                        .exec()
+                        .then(res.sendStatus(204))
+                        .catch(err => next(new ErrorHandler(404, "Location not found")));
+                }
+            });
     },
     updateAvailableLocationOffered: (req, res, next) => {
         LocationOffered.findByIdAndUpdate(req.params.id,
@@ -99,6 +100,7 @@ let controller = {
                     available: req.body.available
                 }
             }, { new: true }, (err, locationUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
                 if (locationUpdated == null) {
                     next(new ErrorHandler(404, "Location not found"));
                 }
@@ -110,6 +112,13 @@ let controller = {
                         .catch(err => next(new ErrorHandler(500, err.message)));
                 }
             });
+    },
+    getLocationById: async (req, res, next) => {
+        User.find({ active: true, location_offered: { _id: req.params.id }}, { active: 0, register_date: 0, __v: 0 })
+            .populate({ path: 'location_offered', model: 'LocationOffered' })
+            .exec()
+            .then(x => res.status(200).json(x))
+            .catch(err => next(new ErrorHandler(500, err.message)));
     },
 }
 

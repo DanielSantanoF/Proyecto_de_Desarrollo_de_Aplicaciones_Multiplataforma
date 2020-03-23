@@ -67,6 +67,48 @@ let controller = {
             }
         })(req, res)
     },
+    updateAvatar: (req, res, next) => {
+        if (req.file != undefined) {
+        User.findByIdAndUpdate(req.user.id,
+            {
+                $set: {
+                    avatar: {
+                        data: req.file.buffer.toString('base64'),
+                        contentType: req.file.mimetype
+                    }
+                }
+            }, { new: true }, (err, userUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
+                if (userUpdated == null) {
+                    next(new ErrorHandler(404, "User not found"));
+                }
+                else {
+                    User.findById(userUpdated._id)
+                        .exec()
+                        .then(x => res.status(200).json(x))
+                        .catch(err => next(new ErrorHandler(500, err.message)))
+                }
+            });
+        } else {
+            next(new ErrorHandler(400, "Not file uploaded Bad request"))
+        }
+    },
+    deleteAvatar: (req, res, next) => {
+        User.findByIdAndUpdate(req.user.id,
+            {
+                $unset: {
+                    avatar: 1
+                }
+            }, { new: true }, (err, userUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
+                if (userUpdated == null) {
+                    next(new ErrorHandler(404, "User not found"));
+                }
+                return userUpdated;
+            })
+            .then((u) => res.status(200).json(u))
+            .catch(err => next(new ErrorHandler(500, err.message)));
+    },
     getUsers: async (req, res, next) => {
         try {
             let result = null;
@@ -113,6 +155,7 @@ let controller = {
                     date_of_birth: date
                 }
             }, { new: true }, (err, userUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }
@@ -141,7 +184,7 @@ let controller = {
                 path: 'favorite_users',
                 model: 'User'
             }).execPopulate())
-            .then(x => res.status(200).json(x))
+            .then(x => res.status(201).json(x))
             .catch(err => next(new ErrorHandler(500, err.message)))
     },
     deleteFavorite: (req, res, next) => {
@@ -177,6 +220,7 @@ let controller = {
                     date_of_birth: date
                 }
             }, { new: true }, (err, userUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }
@@ -195,6 +239,7 @@ let controller = {
                     living_with: req.body.idUser
                 }
             }, { new: true }, (err, userUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }
@@ -229,6 +274,7 @@ let controller = {
                     living_with: 1
                 }
             }, { new: true }, (err, userUpdated) => {
+                if(err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }

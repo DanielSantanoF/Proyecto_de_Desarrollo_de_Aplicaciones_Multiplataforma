@@ -192,36 +192,6 @@
 							"response": []
 						},
 						{
-							"name": "Delete me",
-							"request": {
-								"auth": {
-									"type": "bearer",
-									"bearer": [
-										{
-											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTcwZWY1ZDQzYjFlMTFjODY5Zjg1ZWIiLCJleHAiOjE1ODQ2OTI5NTM2NjcsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.aDdz9CSWS90TxhWGnFxeRq6sMv4Y50l2WjwL1Eiaa-k",
-											"type": "string"
-										}
-									]
-								},
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "localhost:3000/api/users/me",
-									"host": [
-										"localhost"
-									],
-									"port": "3000",
-									"path": [
-										"api",
-										"users",
-										"me"
-									]
-								}
-							},
-							"response": []
-						},
-						{
 							"name": "Update my Living with",
 							"request": {
 								"auth": {
@@ -229,7 +199,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5MDYzNDI0NDUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.D0wt9SQj31XvxS5JSQbQmy5RT_UEySCQ3WMZQTLEoKA",
 											"type": "string"
 										}
 									]
@@ -263,6 +233,77 @@
 							"response": []
 						},
 						{
+							"name": "Update my Avatar",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0Yjg3MzcxNGFhNzViMDFmZTA1M2UiLCJleHAiOjE1ODQ5NzQxMzUwNjYsInVzZXJuYW1lIjoiZHNhbnRhbm8xMjMifQ.L0HArIhehSPTWomOcAf_lfroapbAxmEdQ3wktBHos-w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "avatar",
+											"type": "file",
+											"src": "/home/danielsf/Descargas/proyectodamlogo.jpg"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:3000/api/users/me/avatar",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"me",
+										"avatar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete me",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODYwYjMyN2RkZDFlYjYxMzc2ZmEiLCJleHAiOjE1ODQ5MDgyMjY4NDMsInVzZXJuYW1lIjoiZHNhbnRhbm81In0.4D0gUMofZnZ1WQtg883pf1PSBgX_RaLcUjbmAZJST2s",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/users/me",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
 							"name": "Delete Living With",
 							"request": {
 								"auth": {
@@ -270,7 +311,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5MDYzNDI0NDUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.D0wt9SQj31XvxS5JSQbQmy5RT_UEySCQ3WMZQTLEoKA",
 											"type": "string"
 										}
 									]
@@ -301,6 +342,37 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Delete my Avatar",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0Yjg3MzcxNGFhNzViMDFmZTA1M2UiLCJleHAiOjE1ODQ5NzQxMzUwNjYsInVzZXJuYW1lIjoiZHNhbnRhbm8xMjMifQ.L0HArIhehSPTWomOcAf_lfroapbAxmEdQ3wktBHos-w",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/users/me/avatar",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"me",
+										"avatar"
+									]
+								}
+							},
+							"response": []
 						}
 					],
 					"protocolProfileBehavior": {},
@@ -317,7 +389,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0Yjg3MzcxNGFhNzViMDFmZTA1M2UiLCJleHAiOjE1ODQ5NzQxMzUwNjYsInVzZXJuYW1lIjoiZHNhbnRhbm8xMjMifQ.L0HArIhehSPTWomOcAf_lfroapbAxmEdQ3wktBHos-w",
 											"type": "string"
 										}
 									]
@@ -357,7 +429,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5MDYzNDI0NDUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.D0wt9SQj31XvxS5JSQbQmy5RT_UEySCQ3WMZQTLEoKA",
 											"type": "string"
 										}
 									]
@@ -388,24 +460,15 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5MDYzNDI0NDUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.D0wt9SQj31XvxS5JSQbQmy5RT_UEySCQ3WMZQTLEoKA",
 											"type": "string"
 										}
 									]
 								},
 								"method": "DELETE",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"idUser\": \"5e7483854c15af1cedb81763\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
-									"raw": "localhost:3000/api/users/me/favorites",
+									"raw": "localhost:3000/api/users/me/favorites/5e7483854c15af1cedb81763",
 									"host": [
 										"localhost"
 									],
@@ -414,7 +477,8 @@
 										"api",
 										"users",
 										"me",
-										"favorites"
+										"favorites",
+										"5e7483854c15af1cedb81763"
 									]
 								}
 							},
@@ -432,7 +496,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5MDYzNDI0NDUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.D0wt9SQj31XvxS5JSQbQmy5RT_UEySCQ3WMZQTLEoKA",
 									"type": "string"
 								}
 							]
@@ -566,7 +630,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODM5MTRjMTVhZjFjZWRiODE3NjUiLCJleHAiOjE1ODQ5NzM0NDIzNzAsInVzZXJuYW1lIjoiZHNhbnRhbm80In0.280PBxvCz3T9eGfsE3iizaoks2w3TL3pQ1m7KiyL64Q",
 									"type": "string"
 								}
 							]
@@ -575,7 +639,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"typeService\": \"REPARACIONES\",\n\t\"title\": \"Cuarto Servicio\",\n\t\"description\": \"Descripcion del cuarto servicio\"\n}",
+							"raw": "{\n\t\"typeService\": \"REPARACIONES\",\n\t\"title\": \"Cuarto Servicio For delete\",\n\t\"description\": \"Descripcion del cuarto servicio\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -583,14 +647,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/servies",
+							"raw": "localhost:3000/api/services",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"servies"
+								"services"
 							]
 						}
 					},
@@ -612,14 +676,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/servies",
+							"raw": "localhost:3000/api/services",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"servies"
+								"services"
 							]
 						}
 					},
@@ -641,14 +705,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/servies/available",
+							"raw": "localhost:3000/api/services/available",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"servies",
+								"services",
 								"available"
 							]
 						}
@@ -671,14 +735,14 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/servies/5e749ee2770c013a4d6b1f8b",
+							"raw": "localhost:3000/api/services/5e749ee2770c013a4d6b1f8b",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"servies",
+								"services",
 								"5e749ee2770c013a4d6b1f8b"
 							]
 						}
@@ -688,10 +752,20 @@
 				{
 					"name": "Delete Service",
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODM5MTRjMTVhZjFjZWRiODE3NjUiLCJleHAiOjE1ODQ5NzM0NDIzNzAsInVzZXJuYW1lIjoiZHNhbnRhbm80In0.280PBxvCz3T9eGfsE3iizaoks2w3TL3pQ1m7KiyL64Q",
+									"type": "string"
+								}
+							]
+						},
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/services/5e71df450d2cbb14f849298a",
+							"raw": "localhost:3000/api/services/5e78c6475978e9679e0f6abc",
 							"host": [
 								"localhost"
 							],
@@ -699,7 +773,7 @@
 							"path": [
 								"api",
 								"services",
-								"5e71df450d2cbb14f849298a"
+								"5e78c6475978e9679e0f6abc"
 							]
 						}
 					},
@@ -713,7 +787,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5MDYzNDI0NDUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.D0wt9SQj31XvxS5JSQbQmy5RT_UEySCQ3WMZQTLEoKA",
 									"type": "string"
 								}
 							]
@@ -722,7 +796,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"typeService\": \"TRANSPORTE\",\n\t\"title\": \"Servicio de transporte\",\n\t\"description\": \"Servicio de transporte para cualquier persona mayor que necesite desde ir a misa o ir al medico y no pueda debid a su edad o alguna condición\"\n}",
+							"raw": "{\n\t\"typeService\": \"TRANSPORTE2\",\n\t\"title\": \"Servicio de transporte\",\n\t\"description\": \"Servicio de transporte para cualquier persona mayor que necesite desde ir a misa o ir al medico y no pueda debid a su edad o alguna condición\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -730,14 +804,14 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/servies/5e73d11d3af0a84dd18f227e",
+							"raw": "localhost:3000/api/services/5e73d11d3af0a84dd18f227e",
 							"host": [
 								"localhost"
 							],
 							"port": "3000",
 							"path": [
 								"api",
-								"servies",
+								"services",
 								"5e73d11d3af0a84dd18f227e"
 							]
 						}
@@ -758,7 +832,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODM5MTRjMTVhZjFjZWRiODE3NjUiLCJleHAiOjE1ODQ5NzA1OTMxOTYsInVzZXJuYW1lIjoiZHNhbnRhbm80In0.qdiH4HDUrF6YvsLvEBOhju_qXnNCDmk-ZvFShQK6EwM",
 									"type": "string"
 								}
 							]
@@ -767,7 +841,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"country\": \"España\",\n\t\"isoCode\": \"ES\",\n\t\"city\": \"Sevilla\",\n\t\"street\": \"Ramon y Cajal\",\n\t\"postalCode\": \"41011\"\n}",
+							"raw": "{\n\t\"country\": \"España44\",\n\t\"isoCode\": \"ES\",\n\t\"city\": \"Sevilla\",\n\t\"street\": \"Ramon y Cajal\",\n\t\"postalCode\": \"41011\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -796,7 +870,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0Yjg3MzcxNGFhNzViMDFmZTA1M2UiLCJleHAiOjE1ODQ5NzQxMzUwNjYsInVzZXJuYW1lIjoiZHNhbnRhbm8xMjMifQ.L0HArIhehSPTWomOcAf_lfroapbAxmEdQ3wktBHos-w",
 									"type": "string"
 								}
 							]
@@ -812,6 +886,36 @@
 							"path": [
 								"api",
 								"locations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Location by Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0Yjg3MzcxNGFhNzViMDFmZTA1M2UiLCJleHAiOjE1ODQ5NzQxMzUwNjYsInVzZXJuYW1lIjoiZHNhbnRhbm8xMjMifQ.L0HArIhehSPTWomOcAf_lfroapbAxmEdQ3wktBHos-w",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/locations/5e74b21815a67452a75f9963",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"locations",
+								"5e74b21815a67452a75f9963"
 							]
 						}
 					},
@@ -864,7 +968,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODM5MTRjMTVhZjFjZWRiODE3NjUiLCJleHAiOjE1ODQ5NzA1OTMxOTYsInVzZXJuYW1lIjoiZHNhbnRhbm80In0.qdiH4HDUrF6YvsLvEBOhju_qXnNCDmk-ZvFShQK6EwM",
 									"type": "string"
 								}
 							]
@@ -873,7 +977,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"available\": false\n}",
+							"raw": "{\n\t\"available\": true\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -881,7 +985,7 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:3000/api/locations/available/5e74b21815a67452a75f9963",
+							"raw": "localhost:3000/api/locations/available/5e78bbb5f7f0b4601d31db9d",
 							"host": [
 								"localhost"
 							],
@@ -890,7 +994,7 @@
 								"api",
 								"locations",
 								"available",
-								"5e74b21815a67452a75f9963"
+								"5e78bbb5f7f0b4601d31db9d"
 							]
 						}
 					},
@@ -904,7 +1008,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODM5MTRjMTVhZjFjZWRiODE3NjUiLCJleHAiOjE1ODQ5NzA1OTMxOTYsInVzZXJuYW1lIjoiZHNhbnRhbm80In0.qdiH4HDUrF6YvsLvEBOhju_qXnNCDmk-ZvFShQK6EwM",
 									"type": "string"
 								}
 							]
@@ -912,7 +1016,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/locations/5e74ac25fbae314aba66b231",
+							"raw": "localhost:3000/api/locations/5e78be443638996338583be7",
 							"host": [
 								"localhost"
 							],
@@ -920,7 +1024,7 @@
 							"path": [
 								"api",
 								"locations",
-								"5e74ac25fbae314aba66b231"
+								"5e78be443638996338583be7"
 							]
 						}
 					},
