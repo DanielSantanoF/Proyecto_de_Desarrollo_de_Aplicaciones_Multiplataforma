@@ -112,6 +112,88 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Validate User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5OTE5MzkzNzQsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.1mwVMcqs180zoL4LCthUVnK2eXGVdq41FMmXlIjgWG8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"validated\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/admin/validate/5e7483854c15af1cedb81763",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"admin",
+								"validate",
+								"5e7483854c15af1cedb81763"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Active User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5OTE5MzkzNzQsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.1mwVMcqs180zoL4LCthUVnK2eXGVdq41FMmXlIjgWG8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"active\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/admin/active/5e7483854c15af1cedb81763",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"admin",
+								"active",
+								"5e7483854c15af1cedb81763"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -186,6 +268,46 @@
 										"api",
 										"users",
 										"me"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update Password",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5ODY3MjgyODIsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.Ah4KGLk9fUVvG7MukLouOQA4dzKShzpwZgFypVKKcxk",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"password\": \"12345678\",\n\t\"confirmPassword\": \"12345678\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/users/me/password",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"users",
+										"me",
+										"password"
 									]
 								}
 							},
@@ -587,6 +709,46 @@
 					"response": []
 				},
 				{
+					"name": "Update Password By Id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5ODY3MjgyODIsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.Ah4KGLk9fUVvG7MukLouOQA4dzKShzpwZgFypVKKcxk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"password\": \"12345678\",\n\t\"confirmPassword\": \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/users/password/5e7483854c15af1cedb81763",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"password",
+								"5e7483854c15af1cedb81763"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Delete User",
 					"request": {
 						"auth": {
@@ -668,7 +830,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5ODY4MjM3MjQsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.VtnZ4aj4KSpmNdJzSycFQH-e7GGxhlkNnlxiKyME-_w",
 									"type": "string"
 								}
 							]
@@ -787,7 +949,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5MDYzNDI0NDUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.D0wt9SQj31XvxS5JSQbQmy5RT_UEySCQ3WMZQTLEoKA",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5ODY4MjM3MjQsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.VtnZ4aj4KSpmNdJzSycFQH-e7GGxhlkNnlxiKyME-_w",
 									"type": "string"
 								}
 							]
@@ -796,7 +958,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"typeService\": \"TRANSPORTE2\",\n\t\"title\": \"Servicio de transporte\",\n\t\"description\": \"Servicio de transporte para cualquier persona mayor que necesite desde ir a misa o ir al medico y no pueda debid a su edad o alguna condición\"\n}",
+							"raw": "{\n\t\"typeService\": \"TRANSPORTE\",\n\t\"title\": \"Servicio de transporte2222\",\n\t\"description\": \"Servicio de transporte para cualquier persona mayor que necesite desde ir a misa o ir al medico y no pueda debid a su edad o alguna condición\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -870,7 +1032,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0Yjg3MzcxNGFhNzViMDFmZTA1M2UiLCJleHAiOjE1ODQ5NzQxMzUwNjYsInVzZXJuYW1lIjoiZHNhbnRhbm8xMjMifQ.L0HArIhehSPTWomOcAf_lfroapbAxmEdQ3wktBHos-w",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5ODY4MjM3MjQsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.VtnZ4aj4KSpmNdJzSycFQH-e7GGxhlkNnlxiKyME-_w",
 									"type": "string"
 								}
 							]
