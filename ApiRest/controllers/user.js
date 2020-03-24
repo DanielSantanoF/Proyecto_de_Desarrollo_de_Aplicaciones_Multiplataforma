@@ -112,7 +112,7 @@ let controller = {
     getUsers: async (req, res, next) => {
         try {
             let result = null;
-            result = await User.find({ active: true }, { register_date: 0, __v: 0 }).exec();
+            result = await User.find({}, { register_date: 0, __v: 0 }).exec();
             res.status(200).json(result);
         } catch (error) {
             next(new ErrorHandler(500, err.message));

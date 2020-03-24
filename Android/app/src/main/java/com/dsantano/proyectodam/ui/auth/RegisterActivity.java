@@ -22,15 +22,13 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
 import com.dsantano.proyectodam.R;
-import com.dsantano.proyectodam.common.Constants;
 import com.dsantano.proyectodam.common.MyApp;
-import com.dsantano.proyectodam.common.SharedPreferencesManager;
 import com.dsantano.proyectodam.datepicker.DateTransformation;
 import com.dsantano.proyectodam.datepicker.DialogDatePickerFragment;
 import com.dsantano.proyectodam.datepicker.IDatePickerListener;
-import com.dsantano.proyectodam.models.UserRegisterResponse;
-import com.dsantano.proyectodam.retrofit.LoginServiceGenerator;
-import com.dsantano.proyectodam.retrofit.Service;
+import com.dsantano.proyectodam.models.auth.UserRegisterResponse;
+import com.dsantano.proyectodam.retrofit.servicegenerators.LoginServiceGenerator;
+import com.dsantano.proyectodam.retrofit.service.Service;
 
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;

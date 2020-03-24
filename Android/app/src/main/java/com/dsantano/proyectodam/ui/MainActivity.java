@@ -1,10 +1,19 @@
 package com.dsantano.proyectodam.ui;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 
 import com.dsantano.proyectodam.R;
+import com.dsantano.proyectodam.common.Constants;
+import com.dsantano.proyectodam.listeners.IAllUsersListener;
+import com.dsantano.proyectodam.models.users.User;
 import com.dsantano.proyectodam.ui.auth.LoginActivity;
+import com.dsantano.proyectodam.ui.users.userdetail.UserDetailActivity;
+import com.dsantano.proyectodam.ui.users.userprofile.UserProfileActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -20,7 +29,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements IAllUsersListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,4 +64,35 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.action_logout:
+                SharedPreferences settings = this.getSharedPreferences(Constants.APP_SETTINGS_FILE, Context.MODE_PRIVATE);
+                settings.edit().clear().apply();
+                Intent i = new Intent(this, LoginActivity.class);
+                startActivity(i);
+                finish();
+                break;
+            case R.id.action_profile:
+                Intent profileI = new Intent(this, UserProfileActivity.class);
+                startActivity(profileI);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onAllUsersItemClick(User user) {
+        Intent i = new Intent(MainActivity.this, UserDetailActivity.class);
+        i.putExtra(Constants.SHARED_PREFERENCES_USER_ID, user.id);
+        startActivity(i);
+    }
 }

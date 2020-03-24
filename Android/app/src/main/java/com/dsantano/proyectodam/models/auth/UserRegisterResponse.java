@@ -1,4 +1,4 @@
-package com.dsantano.proyectodam.models;
+package com.dsantano.proyectodam.models.auth;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

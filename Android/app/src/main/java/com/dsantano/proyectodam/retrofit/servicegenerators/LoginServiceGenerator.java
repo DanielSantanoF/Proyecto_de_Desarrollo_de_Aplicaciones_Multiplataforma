@@ -1,4 +1,4 @@
-package com.dsantano.proyectodam.retrofit;
+package com.dsantano.proyectodam.retrofit.servicegenerators;
 
 import android.text.TextUtils;
 
