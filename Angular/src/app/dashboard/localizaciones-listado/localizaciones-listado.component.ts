@@ -49,7 +49,7 @@ export class LocalizacionesListadoComponent implements OnInit {
         city: data.location_offered.city,
         street: data.location_offered.street,
         postalCode: data.location_offered.postal_code,
-        id: data._id
+        id: data.location_offered._id
       }
     });
     dialogRef.afterClosed().subscribe(resp => {

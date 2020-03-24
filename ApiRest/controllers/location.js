@@ -28,7 +28,7 @@ let controller = {
                     User.findByIdAndUpdate(req.user.id,
                         {
                             $set: {
-                                location_offered: location.id
+                                location_offered: location._id
                             }
                         }, { new: true }, (err, userUpdated) => {
                             if(err) new ErrorHandler(500, err.message);

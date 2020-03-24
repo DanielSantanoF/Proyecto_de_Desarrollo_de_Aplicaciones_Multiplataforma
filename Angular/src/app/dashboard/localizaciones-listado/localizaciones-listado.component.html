@@ -30,9 +30,9 @@
         <ng-container matColumnDef="acciones">
           <th mat-header-cell *matHeaderCellDef> Acciones </th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button aria-label="Editar servicio" (click)="editLocation(element)">
+            <button mat-icon-button aria-label="Editar localizacion" (click)="editLocation(element)">
               <mat-icon>edit</mat-icon></button>
-            <button mat-icon-button aria-label="Eliminar servicio" (click)="deleteLocation(element._id)">
+            <button mat-icon-button aria-label="Eliminar localizacion" (click)="deleteLocation(element.location_offered._id)">
               <mat-icon>delete</mat-icon></button>
         </td>
         </ng-container>

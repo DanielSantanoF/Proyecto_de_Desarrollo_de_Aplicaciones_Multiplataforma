@@ -112,7 +112,7 @@ let controller = {
     getUsers: async (req, res, next) => {
         try {
             let result = null;
-            result = await User.find({ active: true }, { active: 0, register_date: 0, __v: 0 }).exec();
+            result = await User.find({ active: true }, { register_date: 0, __v: 0 }).exec();
             res.status(200).json(result);
         } catch (error) {
             next(new ErrorHandler(500, err.message));
@@ -121,7 +121,7 @@ let controller = {
     getUserById: async (req, res, next) => {
         try {
             let result = null;
-            result = await User.find({ _id: req.params.id }, { active: 0, register_date: 0, __v: 0 }).exec();
+            result = await User.find({ _id: req.params.id }, { register_date: 0, __v: 0 }).exec();
             res.status(200).json(result);
         } catch (error) {
             next(new ErrorHandler(500, err.message));
@@ -130,7 +130,7 @@ let controller = {
     getMe: async (req, res, next) => {
         try {
             let result = null;
-            result = await User.find({ _id: req.user.id }, { active: 0, register_date: 0, __v: 0 }).exec();
+            result = await User.find({ _id: req.user.id }, { register_date: 0, __v: 0 }).exec();
             res.status(200).json(result);
         } catch (error) {
             next(new ErrorHandler(500, err.message));

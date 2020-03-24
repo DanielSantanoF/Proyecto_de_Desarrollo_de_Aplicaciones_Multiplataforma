@@ -2,6 +2,7 @@ import { Avatar } from "./avatar.interface";
 
 export interface UserApiRest {
     validated: boolean;
+    active: boolean;
     location_offered: string;
     favorite_users: string[];
     _id: string;

@@ -8,7 +8,7 @@ let middlewares = {
         if(req.user.type_user == 'OFRECE_ALOJAMIENTO'){
             next();
             (req, res, next);
-        } else if(req.user.type_user == 'ADMIN'){
+        } else if(req.user.role == 'ADMIN'){
             next();
             (req, res, next)
         } else {

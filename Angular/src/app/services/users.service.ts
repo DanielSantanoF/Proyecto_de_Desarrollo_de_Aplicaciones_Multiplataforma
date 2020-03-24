@@ -52,12 +52,12 @@ export class UsersService {
 
   putValidated(id: string, state: boolean): Observable<UserApiRest>{
     const dto = new ValidatedDto(state);
-    return this.http.put<UserApiRest>(API_REST_UTL + `users/admin/validate/${id}`, dto, this.authService.getHttpOptionsWithToken())
+    return this.http.put<UserApiRest>(API_REST_UTL + `api/users/admin/validate/${id}`, dto, this.authService.getHttpOptionsWithToken())
   }
 
   putActive(id: string, state: boolean): Observable<UserApiRest>{
     const dto = new ActiveDto(state);
-    return this.http.put<UserApiRest>(API_REST_UTL + `users/admin/active/${id}`, dto, this.authService.getHttpOptionsWithToken())
+    return this.http.put<UserApiRest>(API_REST_UTL + `api/users/admin/active/${id}`, dto, this.authService.getHttpOptionsWithToken())
   }
 
 }

@@ -15,7 +15,7 @@ export class MenuService {
       },
       {
         link: '/users',
-        label: 'Users',
+        label: 'Usuarios',
         icon: 'supervised_user_circle'
       },
       {
