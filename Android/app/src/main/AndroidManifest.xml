@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.users.userprofile.UserProfileActivity"></activity>
+        <activity android:name=".ui.users.userprofile.EditUserProfileActivity"></activity>
+        <activity android:name=".ui.users.userprofile.UserProfileActivity" />
         <activity android:name=".ui.users.userdetail.UserDetailActivity" />
         <activity android:name=".ui.auth.RegisterActivity" />
         <activity android:name=".ui.auth.LoginActivity">

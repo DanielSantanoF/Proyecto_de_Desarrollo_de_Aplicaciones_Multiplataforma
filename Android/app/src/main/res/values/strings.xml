@@ -25,4 +25,25 @@
     <string name="menu_log_out">Cerrar Sesión</string>
     <string name="action_add_favorite">Añadir a favoritos</string>
     <string name="birth_date">Fecha de nacimiento:</string>
+    <string name="message">Mensaje:</string>
+    <string name="choose_email_client">Seleccione el cliente para enviar el email:</string>
+    <string name="action_change_password">Cambiar contraseña</string>
+    <string name="action_delete_avatar">Eliminar avatar</string>
+    <string name="btn_change_type">Cambiar tipo de usuario</string>
+    <string name="btn_edit_profile">Editar perfil</string>
+    <string name="photo_needed">Seleccione una foto</string>
+    <string name="avatar_update">Foto de perfil actualizada correctamente</string>
+    <string name="update">Actualizar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="password_needed">Contraseña necesaria</string>
+    <string name="confirm_password_needed">Repita su contraseña</string>
+    <string name="correct_update">Se ha actualizado correctamente</string>
+    <string name="error_in_update">Error al actualizar</string>
+    <string name="change_password_title">Cambiar contraseña</string>
+    <string name="change_password_body">Indique la nueva contraseña</string>
+    <string name="avatar_deleted">Avatar eliminado</string>
+    <string name="action_delete_me">Darse de baja</string>
+    <string name="confirm">Confirmar</string>
+    <string name="delete_me_title">¿Darse de baja?</string>
+    <string name="delete_me_body">Si te das de baja perderas todos tus datos</string>
 </resources>

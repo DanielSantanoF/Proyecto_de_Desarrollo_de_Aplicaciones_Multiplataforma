@@ -11,5 +11,7 @@ public class Constants {
     public static final String SHARED_PREFERENCES_AUTH_TOKEN = "authToken";
     public static final String SHARED_PREFERENCES_USER_ID = "userId";
     public static final String FIREBASE_COLLECTION_USERS = "users";
+    public static final String SHARED_PREFERENCES_USER_NAME = "userName";
+    public static final String SHARED_PREFERENCES_USER_TYPE = "userType";
 
 }

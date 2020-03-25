@@ -6,7 +6,7 @@ const LocationOffered = require('../models/location');
 
 let controller = {
     getLocations: async (req, res, next) => {
-        User.find({ active: true, location_offered: { $exists: true }}, { username: 1, avatar: 1, date_of_birth: 1, location_offered: 1 })
+        User.find({ location_offered: { $exists: true }}, { username: 1, avatar: 1, date_of_birth: 1, location_offered: 1 })
             .populate({ path: 'location_offered', model: 'LocationOffered' })
             .exec()
             .then(x => res.status(200).json(x))
@@ -114,7 +114,7 @@ let controller = {
             });
     },
     getLocationById: async (req, res, next) => {
-        User.find({ active: true, location_offered: { _id: req.params.id }}, { active: 0, register_date: 0, __v: 0 })
+        User.findOne({ location_offered: { _id: req.params.id }}, { active: 0, register_date: 0, __v: 0 })
             .populate({ path: 'location_offered', model: 'LocationOffered' })
             .exec()
             .then(x => res.status(200).json(x))

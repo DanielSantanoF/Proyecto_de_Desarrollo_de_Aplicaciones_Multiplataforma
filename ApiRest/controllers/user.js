@@ -69,26 +69,26 @@ let controller = {
     },
     updateAvatar: (req, res, next) => {
         if (req.file != undefined) {
-        User.findByIdAndUpdate(req.user.id,
-            {
-                $set: {
-                    avatar: {
-                        data: req.file.buffer.toString('base64'),
-                        contentType: req.file.mimetype
+            User.findByIdAndUpdate(req.user.id,
+                {
+                    $set: {
+                        avatar: {
+                            data: req.file.buffer.toString('base64'),
+                            contentType: req.file.mimetype
+                        }
                     }
-                }
-            }, { new: true }, (err, userUpdated) => {
-                if(err) new ErrorHandler(500, err.message);
-                if (userUpdated == null) {
-                    next(new ErrorHandler(404, "User not found"));
-                }
-                else {
-                    User.findById(userUpdated._id)
-                        .exec()
-                        .then(x => res.status(200).json(x))
-                        .catch(err => next(new ErrorHandler(500, err.message)))
-                }
-            });
+                }, { new: true }, (err, userUpdated) => {
+                    if (err) new ErrorHandler(500, err.message);
+                    if (userUpdated == null) {
+                        next(new ErrorHandler(404, "User not found"));
+                    }
+                    else {
+                        User.findById(userUpdated._id)
+                            .exec()
+                            .then(x => res.status(200).json(x))
+                            .catch(err => next(new ErrorHandler(500, err.message)))
+                    }
+                });
         } else {
             next(new ErrorHandler(400, "Not file uploaded Bad request"))
         }
@@ -100,7 +100,7 @@ let controller = {
                     avatar: 1
                 }
             }, { new: true }, (err, userUpdated) => {
-                if(err) new ErrorHandler(500, err.message);
+                if (err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }
@@ -119,22 +119,16 @@ let controller = {
         }
     },
     getUserById: async (req, res, next) => {
-        try {
-            let result = null;
-            result = await User.find({ _id: req.params.id }, { register_date: 0, __v: 0 }).exec();
-            res.status(200).json(result);
-        } catch (error) {
-            next(new ErrorHandler(500, err.message));
-        }
+        User.findById(req.params.id)
+            .exec()
+            .then(x => res.status(200).json(x))
+            .catch(err => next(new ErrorHandler(500, err.message)))
     },
     getMe: async (req, res, next) => {
-        try {
-            let result = null;
-            result = await User.find({ _id: req.user.id }, { register_date: 0, __v: 0 }).exec();
-            res.status(200).json(result);
-        } catch (error) {
-            next(new ErrorHandler(500, err.message));
-        }
+        User.findById(req.user.id)
+            .exec()
+            .then(x => res.status(200).json(x))
+            .catch(err => next(new ErrorHandler(500, err.message)))
     },
     deleteMe: (req, res, next) => {
         User.findByIdAndDelete(req.user.id)
@@ -155,7 +149,7 @@ let controller = {
                     date_of_birth: date
                 }
             }, { new: true }, (err, userUpdated) => {
-                if(err) new ErrorHandler(500, err.message);
+                if (err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }
@@ -188,16 +182,16 @@ let controller = {
             .catch(err => next(new ErrorHandler(500, err.message)))
     },
     deleteFavorite: (req, res, next) => {
-        User.findByIdAndUpdate(req.user.id, { 
-            $pull: { 
-                favorite_users: req.params.id 
-                } 
-            },(err, user)=> {
-              if(err){
+        User.findByIdAndUpdate(req.user.id, {
+            $pull: {
+                favorite_users: req.params.id
+            }
+        }, (err, user) => {
+            if (err) {
                 next(new ErrorHandler(500, err.message))
-                }
-                return user;
-            })
+            }
+            return user;
+        })
             .then((u) => res.status(200).json(u))
             .catch(err => next(new ErrorHandler(500, err.message)));
     },
@@ -220,7 +214,7 @@ let controller = {
                     date_of_birth: date
                 }
             }, { new: true }, (err, userUpdated) => {
-                if(err) new ErrorHandler(500, err.message);
+                if (err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }
@@ -239,7 +233,7 @@ let controller = {
                     living_with: req.body.idUser
                 }
             }, { new: true }, (err, userUpdated) => {
-                if(err) new ErrorHandler(500, err.message);
+                if (err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }
@@ -274,7 +268,7 @@ let controller = {
                     living_with: 1
                 }
             }, { new: true }, (err, userUpdated) => {
-                if(err) new ErrorHandler(500, err.message);
+                if (err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }
@@ -310,15 +304,15 @@ let controller = {
                         password: hash
                     }
                 }, { new: true }, (err, userUpdated) => {
-                    if(err) new ErrorHandler(500, err.message);
+                    if (err) new ErrorHandler(500, err.message);
                     if (userUpdated == null) {
                         next(new ErrorHandler(404, "User not found"));
                     }
                     else {
                         User.findById(userUpdated._id)
-                        .exec()
-                        .then(x => res.status(200).json(x))
-                        .catch(err => next(new ErrorHandler(500, err.message)))
+                            .exec()
+                            .then(x => res.status(200).json(x))
+                            .catch(err => next(new ErrorHandler(500, err.message)))
                     }
                 });
         } else {
@@ -334,15 +328,15 @@ let controller = {
                         password: hash
                     }
                 }, { new: true }, (err, userUpdated) => {
-                    if(err) new ErrorHandler(500, err.message);
+                    if (err) new ErrorHandler(500, err.message);
                     if (userUpdated == null) {
                         next(new ErrorHandler(404, "User not found"));
                     }
                     else {
                         User.findById(userUpdated._id)
-                        .exec()
-                        .then(x => res.status(200).json(x))
-                        .catch(err => next(new ErrorHandler(500, err.message)))
+                            .exec()
+                            .then(x => res.status(200).json(x))
+                            .catch(err => next(new ErrorHandler(500, err.message)))
                     }
                 });
         } else {
@@ -356,15 +350,15 @@ let controller = {
                     validated: req.body.validated
                 }
             }, { new: true }, (err, userUpdated) => {
-                if(err) new ErrorHandler(500, err.message);
+                if (err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }
                 else {
                     User.findById(userUpdated._id)
-                    .exec()
-                    .then(x => res.status(200).json(x))
-                    .catch(err => next(new ErrorHandler(500, err.message)))
+                        .exec()
+                        .then(x => res.status(200).json(x))
+                        .catch(err => next(new ErrorHandler(500, err.message)))
                 }
             });
     },
@@ -375,15 +369,15 @@ let controller = {
                     active: req.body.active
                 }
             }, { new: true }, (err, userUpdated) => {
-                if(err) new ErrorHandler(500, err.message);
+                if (err) new ErrorHandler(500, err.message);
                 if (userUpdated == null) {
                     next(new ErrorHandler(404, "User not found"));
                 }
                 else {
                     User.findById(userUpdated._id)
-                    .exec()
-                    .then(x => res.status(200).json(x))
-                    .catch(err => next(new ErrorHandler(500, err.message)))
+                        .exec()
+                        .then(x => res.status(200).json(x))
+                        .catch(err => next(new ErrorHandler(500, err.message)))
                 }
             });
     }

@@ -73,9 +73,10 @@ public class RegisterActivity extends AppCompatActivity implements IDatePickerLi
         txtDateSelected = findViewById(R.id.textViewBirthDateRegister);
 
         spinnerTypeUser = findViewById(R.id.spinnerTypeUserRegister);
-        spinnerTypeUsersList.add("Buscando compañía");
-        spinnerTypeUsersList.add("Ofreciendo alojamiento");
-        spinnerTypeUsersList.add("Joven ofreciendo compañía");
+        spinnerTypeUsersList.add(getResources().getString(R.string.searching_compani));
+        spinnerTypeUsersList.add(getResources().getString(R.string.offer_occupation));
+        spinnerTypeUsersList.add(getResources().getString(R.string.offer_compani));
+        spinnerTypeUsersList.add(getResources().getString(R.string.offer_service));
         typeUserSpinnerArrayAdapter = new ArrayAdapter(RegisterActivity.this, R.layout.support_simple_spinner_dropdown_item, spinnerTypeUsersList);
         spinnerTypeUser.setAdapter(typeUserSpinnerArrayAdapter);
 
@@ -89,6 +90,8 @@ public class RegisterActivity extends AppCompatActivity implements IDatePickerLi
                     typeUserSelected = "OFRECE_ALOJAMIENTO";
                 } else if(type == 3){
                     typeUserSelected = "JOVEN";
+                } else if(type == 4){
+                    typeUserSelected = "OFRECE_SERVICIO";
                 }
             }
 
@@ -225,6 +228,7 @@ public class RegisterActivity extends AppCompatActivity implements IDatePickerLi
                     Glide
                             .with(this)
                             .load(uri)
+                            .thumbnail(Glide.with(RegisterActivity.this).load(R.drawable.loading_gif))
                             .transform(new CircleCrop())
                             .into(ivAvatar);
                     uriSelected = uri;

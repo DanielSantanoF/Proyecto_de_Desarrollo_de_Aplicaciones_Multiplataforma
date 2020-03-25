@@ -62,8 +62,19 @@ public class MyUserRecyclerViewAdapter extends RecyclerView.Adapter<MyUserRecycl
             }
             LocalDate today = new LocalDate();
             int actualYear = today.getYear();
-            int birthYear = Integer.parseInt(holder.mItem.getDateOfBirth().split("-")[0]);
+            int actualDay = today.getDayOfMonth();
+            int actualMonth = today.getMonthOfYear();
+            String birthDate = holder.mItem.getDateOfBirth().split("T")[0];
+            int birthYear = Integer.parseInt(birthDate.split("-")[0]);
+            int birthDay = Integer.parseInt(birthDate.split("-")[2]);
+            int birthMonth = Integer.parseInt(birthDate.split("-")[1]);
             int age = actualYear - birthYear;
+            age = age -1;
+            if(actualMonth >= birthMonth){
+                if(actualDay < birthDay){
+                    age = age + 1;
+                }
+            }
             holder.txtAge.setText(ctx.getResources().getString(R.string.age) + " " + age);
 
             if(holder.mItem.getAvatar() != null){
@@ -75,12 +86,14 @@ public class MyUserRecyclerViewAdapter extends RecyclerView.Adapter<MyUserRecycl
                 Glide
                         .with(ctx)
                         .load(decodedImage)
+                        .thumbnail(Glide.with(ctx).load(R.drawable.loading_gif))
                         .transform(new CircleCrop())
                         .into(holder.ivAvatar);
             } else {
                 Glide
                         .with(ctx)
                         .load(ctx.getDrawable(R.drawable.default_user))
+                        .thumbnail(Glide.with(ctx).load(R.drawable.loading_gif))
                         .transform(new CircleCrop())
                         .into(holder.ivAvatar);
             }

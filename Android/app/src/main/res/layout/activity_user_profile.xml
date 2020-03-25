@@ -4,6 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.users.userprofile.UserProfileActivity">
+    android:padding="8dp"
+    tools:context=".ui.users.userdetail.UserDetailActivity">
+
+    <ImageView
+        android:id="@+id/imageViewAvatarUserDetail"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textViewNameUserDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewAvatarUserDetail" />
+
+    <TextView
+        android:id="@+id/textViewUsernameUserDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewNameUserDetail"
+        app:layout_constraintStart_toStartOf="@+id/textViewNameUserDetail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNameUserDetail" />
+
+    <TextView
+        android:id="@+id/textViewBirthDateUserDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewUsernameUserDetail"
+        app:layout_constraintStart_toStartOf="@+id/textViewUsernameUserDetail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUsernameUserDetail" />
+
+    <TextView
+        android:id="@+id/textViewAgeUserDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewBirthDateUserDetail"
+        app:layout_constraintStart_toStartOf="@+id/textViewBirthDateUserDetail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewBirthDateUserDetail" />
+
+    <TextView
+        android:id="@+id/textViewTypeUserDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewAgeUserDetail"
+        app:layout_constraintStart_toStartOf="@+id/textViewAgeUserDetail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewAgeUserDetail" />
+
+    <Button
+        android:id="@+id/buttonEditUserProfile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:background="@drawable/round_bg_primary"
+        android:text="@string/btn_edit_profile"
+        android:textColor="@color/design_default_color_on_primary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTypeUserDetail" />
+
+    <ImageButton
+        android:id="@+id/imageButtonUploadChangeAvatar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/round_bg_green"
+        android:visibility="gone"
+        app:layout_constraintEnd_toStartOf="@+id/imageViewAvatarUserDetail"
+        app:layout_constraintTop_toTopOf="@+id/imageViewAvatarUserDetail"
+        app:srcCompat="@drawable/ic_cloud_upload_white_24dp" />
+
+    <ImageButton
+        android:id="@+id/imageButtonCancelChangeUserProfile"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/round_bg_red"
+        android:visibility="gone"
+        app:layout_constraintStart_toEndOf="@+id/imageViewAvatarUserDetail"
+        app:layout_constraintTop_toTopOf="@+id/imageViewAvatarUserDetail"
+        app:srcCompat="@drawable/ic_cancel_white_24dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
