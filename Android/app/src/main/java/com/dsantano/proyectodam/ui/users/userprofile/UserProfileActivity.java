@@ -30,6 +30,8 @@ import com.dsantano.proyectodam.common.Constants;
 import com.dsantano.proyectodam.data.viewmodel.UserMeViewModel;
 import com.dsantano.proyectodam.datepicker.DateTransformation;
 import com.dsantano.proyectodam.models.users.User;
+import com.dsantano.proyectodam.models.users.UserIdSended;
+import com.dsantano.proyectodam.ui.users.allfavoriteusers.ShowFavoriteUsersActivity;
 
 import org.joda.time.LocalDate;
 
@@ -84,8 +86,12 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(UserProfileActivity.this, EditUserProfileActivity.class);
-                i.putExtra(Constants.SHARED_PREFERENCES_USER_NAME, userLoaded.name);
-                i.putExtra(Constants.SHARED_PREFERENCES_USER_TYPE, userLoaded.typeUser);
+                i.putExtra(Constants.SHARED_PREFERENCES_USER_NAME, userLoaded.getName());
+                i.putExtra(Constants.SHARED_PREFERENCES_USER_TYPE, userLoaded.getTypeUser());
+                i.putExtra(Constants.SHARED_PREFERENCES_USER_USERNAME, userLoaded.getUsername());
+                i.putExtra(Constants.SHARED_PREFERENCES_USER_EMAIL, userLoaded.getEmail());
+                i.putExtra(Constants.SHARED_PREFERENCES_USER_PHONE, userLoaded.getPhone());
+                i.putExtra(Constants.SHARED_PREFERENCES_USER_BIRTH_DATE, userLoaded.getDateOfBirth().split("T")[0]);
                 startActivity(i);
             }
         });
@@ -240,6 +246,19 @@ public class UserProfileActivity extends AppCompatActivity {
                 ConfirmDeleteMeDialogFragment dialogConfirmDelete = new ConfirmDeleteMeDialogFragment(UserProfileActivity.this);
                 dialogConfirmDelete.show(getSupportFragmentManager(), "ConfirmDeleteMeDialogFragment");
                 break;
+            case R.id.action_go_favorites:
+                Intent i = new Intent(UserProfileActivity.this, ShowFavoriteUsersActivity.class);
+                startActivity(i);
+                break;
+            case R.id.action_delete_living_with_profile:
+                if(userLoaded.getLivingWith() != null){
+                    UserIdSended userIdSended = new UserIdSended(userLoaded.getLivingWith());
+                    userMeViewModel.deleteLivingWith(userIdSended);
+                    Toast.makeText(this, getResources().getString(R.string.living_with_deleted), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, getResources().getString(R.string.actually_not_living_with), Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -272,5 +291,11 @@ public class UserProfileActivity extends AppCompatActivity {
                 btnCancelChange.setVisibility(View.VISIBLE);
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        loadUser();
     }
 }

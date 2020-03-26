@@ -19,6 +19,7 @@ import com.dsantano.proyectodam.data.viewmodel.UserMeViewModel;
 import com.dsantano.proyectodam.datepicker.DateTransformation;
 import com.dsantano.proyectodam.datepicker.DialogDatePickerFragment;
 import com.dsantano.proyectodam.datepicker.IDatePickerListener;
+import com.dsantano.proyectodam.models.users.EditUserSended;
 import com.dsantano.proyectodam.ui.auth.RegisterActivity;
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ import java.util.List;
 public class EditUserProfileActivity extends AppCompatActivity implements IDatePickerListener {
 
     EditText edUsername, edEmail, edName, edPhone;
-    Button btnPickBirthDate, btnDoRegister;
+    Button btnPickBirthDate, btnConfirmEdit;
     TextView txtDateSelected;
     Spinner spinnerTypeUser;
     ArrayAdapter typeUserSpinnerArrayAdapter;
@@ -43,13 +44,22 @@ public class EditUserProfileActivity extends AppCompatActivity implements IDateP
         userMeViewModel = new ViewModelProvider(this).get(UserMeViewModel.class);
         name = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_NAME).toString();
         typeUserSelected = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_TYPE).toString();
+        username = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_USERNAME).toString();
+        email = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_EMAIL).toString();
+        phone = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_PHONE).toString();
+        dateSelected = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_BIRTH_DATE).toString();
 
 
         edUsername = findViewById(R.id.editTextUsernameRegister);
+        edUsername.setText(username);
         edEmail = findViewById(R.id.editTextEmailRegister);
+        edEmail.setText(email);
         edName = findViewById(R.id.editTextNameRegister);
+        edName.setText(name);
         edPhone = findViewById(R.id.editTextPhoneRegister);
+        edPhone.setText(phone);
         txtDateSelected = findViewById(R.id.textViewBirthDateRegister);
+        txtDateSelected.setText(dateSelected);
 
         spinnerTypeUser = findViewById(R.id.spinnerTypeUserRegister);
         spinnerTypeUsersList.add(getResources().getString(R.string.searching_compani));
@@ -86,6 +96,16 @@ public class EditUserProfileActivity extends AppCompatActivity implements IDateP
             public void onClick(View v) {
                 DialogFragment datePickerFragment = DialogDatePickerFragment.newInstance(EditUserProfileActivity.this);
                 datePickerFragment.show(EditUserProfileActivity.this.getSupportFragmentManager(), "datePicker");
+            }
+        });
+
+        btnConfirmEdit = findViewById(R.id.buttonConfirmEdtiUserProfile);
+        btnConfirmEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditUserSended editUserSended = new EditUserSended(username, email, phone, name, typeUserSelected, dateSelected);
+                userMeViewModel.updateMe(editUserSended);
+                finish();
             }
         });
     }

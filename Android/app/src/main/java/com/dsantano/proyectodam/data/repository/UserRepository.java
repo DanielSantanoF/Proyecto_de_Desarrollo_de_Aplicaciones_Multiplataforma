@@ -7,15 +7,18 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.dsantano.proyectodam.R;
 import com.dsantano.proyectodam.common.MyApp;
+import com.dsantano.proyectodam.models.users.EditUserSended;
+import com.dsantano.proyectodam.models.users.UserIdSended;
+import com.dsantano.proyectodam.models.users.FavoriteUser;
 import com.dsantano.proyectodam.models.users.User;
 import com.dsantano.proyectodam.models.users.UserDetail;
 import com.dsantano.proyectodam.retrofit.service.Service;
 import com.dsantano.proyectodam.retrofit.servicegenerators.TokenServiceGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.MultipartBody;
-import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -26,6 +29,7 @@ public class UserRepository {
     MutableLiveData<List<User>> allUsers;
     MutableLiveData<UserDetail> userById;
     MutableLiveData<User> me;
+    MutableLiveData<FavoriteUser> myFavoriteUsers;
 
     public UserRepository() {
         service = tokenServiceGenerator.createService(Service.class);
@@ -40,6 +44,22 @@ public class UserRepository {
             public void onResponse(Call<List<User>> call, Response<List<User>> response) {
                 if (response.isSuccessful()) {
                     data.setValue(response.body());
+                    for (User user: data.getValue()) {
+                        List<String> list = new ArrayList<>();
+                        if (user.getName() == null || user.getName().isEmpty()){
+                            user.setName("Undefined");
+                        }
+                        if (user.getEmail() == null || user.getEmail().isEmpty()){
+                            user.setEmail("Undefined");
+                        }
+                        if (user.getUsername() == null || user.getUsername().isEmpty()){
+                            user.setEmail("Undefined");
+                        }
+                        list.add(user.getName());
+                        list.add(user.getEmail());
+                        list.add(user.getUsername());
+                        user.setPalabrasClave(list);
+                    }
                 } else {
                     Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
                 }
@@ -151,24 +171,131 @@ public class UserRepository {
         return data;
     }
 
-    public void deleteMe() {
-        Call<ResponseBody> call = service.deleteMe();
-        call.enqueue(new Callback<ResponseBody>() {
+    public MutableLiveData<User> updateMe(EditUserSended editUserSended){
+        final MutableLiveData<User> data = new MutableLiveData<>();
+        Call<User> call = service.putMe(editUserSended);
+        call.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
-                if (response.isSuccessful()) {
-                    //Correct
-                } else {
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()){
+                    data.setValue(response.body());
+                    Log.i("putMe","Avatar correctly update");
+                }else{
                     Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<ResponseBody> call, Throwable t) {
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.d("putMe", "onFailure: " + t.getMessage());
                 Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
-                Log.d("deleteMe", "onFailure: " + t.getMessage());
+            }
+        });
+        me = data;
+        return data;
+    }
+
+    public void postNewFavorite(UserIdSended userIdSended){
+        Call<FavoriteUser> call = service.postNewFavorite(userIdSended);
+        call.enqueue(new Callback<FavoriteUser>() {
+            @Override
+            public void onResponse(Call<FavoriteUser> call, Response<FavoriteUser> response) {
+                if (response.isSuccessful()){
+                    Log.i("postNewFavotire","Favorite correctly added");
+                }else{
+                    Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FavoriteUser> call, Throwable t) {
+                Log.d("postNewFavotire", "onFailure: " + t.getMessage());
+                Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
+    public void putLivingWith(UserIdSended userIdSended){
+        Call<User> call = service.putLivingWith(userIdSended);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()){
+                    Log.i("putLivingWith","LivingWith correctly updated");
+                }else{
+                    Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.d("putLivingWith", "onFailure: " + t.getMessage());
+                Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void deleteLivingWith(UserIdSended userIdSended){
+        Call<User> call = service.deleteLivingWith(userIdSended);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                if (response.isSuccessful()){
+                    Log.i("deleteLivingWith","LivingWith correctly deleted");
+                }else{
+                    Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.d("deleteLivingWith", "onFailure: " + t.getMessage());
+                Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public MutableLiveData<FavoriteUser> getAllFavorites(){
+        final MutableLiveData<FavoriteUser> data = new MutableLiveData<>();
+        Call<FavoriteUser> call = service.getAllFavorites();
+        call.enqueue(new Callback<FavoriteUser>() {
+            @Override
+            public void onResponse(Call<FavoriteUser> call, Response<FavoriteUser> response) {
+                if (response.isSuccessful()){
+                    data.setValue(response.body());
+                    Log.i("getAllFavorites","Avatar correctly update");
+                    if(data.getValue().getFavoriteUsers() != null){
+                        for (User user: data.getValue().getFavoriteUsers()) {
+                            List<String> list = new ArrayList<>();
+                            if (user.getName() == null || user.getName().isEmpty()){
+                                user.setName("Undefined");
+                            }
+                            if (user.getEmail() == null || user.getEmail().isEmpty()){
+                                user.setEmail("Undefined");
+                            }
+                            if (user.getUsername() == null || user.getUsername().isEmpty()){
+                                user.setEmail("Undefined");
+                            }
+                            list.add(user.getName());
+                            list.add(user.getEmail());
+                            list.add(user.getUsername());
+                            user.setPalabrasClave(list);
+                        }
+                    }
+                }else{
+                    Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<FavoriteUser> call, Throwable t) {
+                Log.d("getAllFavorites", "onFailure: " + t.getMessage());
+                Toast.makeText(MyApp.getContext(), MyApp.getContext().getResources().getString(R.string.error_in_the_connection), Toast.LENGTH_SHORT).show();
+            }
+        });
+        myFavoriteUsers = data;
+        return data;
+    }
+
 
 }

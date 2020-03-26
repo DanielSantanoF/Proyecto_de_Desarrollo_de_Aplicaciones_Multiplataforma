@@ -7,7 +7,9 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.dsantano.proyectodam.data.repository.UserRepository;
+import com.dsantano.proyectodam.models.users.EditUserSended;
 import com.dsantano.proyectodam.models.users.User;
+import com.dsantano.proyectodam.models.users.UserIdSended;
 
 import okhttp3.MultipartBody;
 
@@ -34,6 +36,15 @@ public class UserMeViewModel extends AndroidViewModel {
     public MutableLiveData<User> deleteAvatar(){
         me = userRepository.deleteAvatar();
         return me;
+    }
+
+    public MutableLiveData<User> updateMe(EditUserSended editUserSended){
+        me = userRepository.updateMe(editUserSended);
+        return me;
+    }
+
+    public void deleteLivingWith(UserIdSended userIdSended){
+        userRepository.deleteLivingWith(userIdSended);
     }
 
 }

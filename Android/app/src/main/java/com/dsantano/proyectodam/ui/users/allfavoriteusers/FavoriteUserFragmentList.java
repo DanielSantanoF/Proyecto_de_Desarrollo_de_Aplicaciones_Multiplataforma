@@ -1,4 +1,4 @@
-package com.dsantano.proyectodam.ui.users.allusers;
+package com.dsantano.proyectodam.ui.users.allfavoriteusers;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -21,39 +21,40 @@ import android.view.ViewGroup;
 import android.widget.SearchView;
 
 import com.dsantano.proyectodam.R;
-import com.dsantano.proyectodam.data.viewmodel.AllUserViewModel;
-import com.dsantano.proyectodam.listeners.IAllUsersListener;
+import com.dsantano.proyectodam.data.viewmodel.FavoriteUsersViewModel;
+import com.dsantano.proyectodam.listeners.IFavoriteUserListener;
+import com.dsantano.proyectodam.models.users.FavoriteUser;
 import com.dsantano.proyectodam.models.users.User;
+import com.dsantano.proyectodam.ui.users.allusers.MyUserRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class UserFragmentList extends Fragment {
+public class FavoriteUserFragmentList extends Fragment {
 
     private int mColumnCount = 1;
-    private IAllUsersListener mListener;
+    private IFavoriteUserListener mListener;
     Context context;
     RecyclerView recyclerView;
-    MyUserRecyclerViewAdapter adapter;
-    AllUserViewModel allUserViewModel;
+    MyFavoriteUserRecyclerViewAdapter adapter;
+    FavoriteUsersViewModel favoriteUsersViewModel;
     List<User> userList = new ArrayList<>();
-    List<User> userListToLoad = new ArrayList<>();
     private MenuItem busqueda;
+    FavoriteUser favoriteUser;
 
-    public UserFragmentList() {
+    public FavoriteUserFragmentList() {
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        allUserViewModel =new ViewModelProvider(getActivity()).get(AllUserViewModel.class);
+        favoriteUsersViewModel =new ViewModelProvider(getActivity()).get(FavoriteUsersViewModel.class);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_user_list_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_favorite_user_list_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -64,19 +65,19 @@ public class UserFragmentList extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            adapter = new MyUserRecyclerViewAdapter(getActivity(), userList, mListener);
+            adapter = new MyFavoriteUserRecyclerViewAdapter(getActivity(), userList, mListener);
             recyclerView.setAdapter(adapter);
-            loadAllUsers();
+            loadAllFavUsers();
         }
         return view;
     }
 
-    public void loadAllUsers(){
-        allUserViewModel.getAllUsers().observe(getActivity(), new Observer<List<User>>() {
+    public void loadAllFavUsers(){
+        favoriteUsersViewModel.getAllFavUsers().observe(getActivity(), new Observer<FavoriteUser>() {
             @Override
-            public void onChanged(List<User> list) {
-                userList = list;
-                adapter.setData(userList);
+            public void onChanged(FavoriteUser fav) {
+                favoriteUser = fav;
+                adapter.setData(favoriteUser.getFavoriteUsers());
             }
         });
     }
@@ -85,11 +86,11 @@ public class UserFragmentList extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof IAllUsersListener) {
-            mListener = (IAllUsersListener) context;
+        if (context instanceof IFavoriteUserListener) {
+            mListener = (IFavoriteUserListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement IAllUsersListener");
+                    + " must implement IFavoriteUserListener");
         }
     }
 
@@ -103,7 +104,7 @@ public class UserFragmentList extends Fragment {
     public void onResume() {
         super.onResume();
         recyclerView.setVisibility(View.GONE);
-        loadAllUsers();
+        loadAllFavUsers();
         recyclerView.setVisibility(View.VISIBLE);
     }
 
@@ -116,7 +117,7 @@ public class UserFragmentList extends Fragment {
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
         super.onPrepareOptionsMenu(menu);
-        getActivity().getMenuInflater().inflate(R.menu.all_users_menu, menu);
+        getActivity().getMenuInflater().inflate(R.menu.favorite_users_menu, menu);
         busqueda = menu.findItem(R.id.app_bar_search);
         SearchView searchView = (SearchView) busqueda.getActionView();
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -158,47 +159,9 @@ public class UserFragmentList extends Fragment {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_searching_compani_users:
-                userListToLoad.clear();
-                for (int i = 0; i <userList.size() ; i++) {
-                    if(userList.get(i).getTypeUser().equals("BUSCA_COMPANIA")){
-                        userListToLoad.add(userList.get(i));
-                    }
-                }
-                adapter.setData(userListToLoad);
-                break;
-            case R.id.action_ofers_accomodation_users:
-                userListToLoad.clear();
-                for (int i = 0; i <userList.size() ; i++) {
-                    if(userList.get(i).getTypeUser().equals("OFRECE_ALOJAMIENTO")){
-                        userListToLoad.add(userList.get(i));
-                    }
-                }
-                adapter.setData(userListToLoad);
-                break;
-            case R.id.action_young_users:
-                userListToLoad.clear();
-                for (int i = 0; i <userList.size() ; i++) {
-                    if(userList.get(i).getTypeUser().equals("JOVEN")){
-                        userListToLoad.add(userList.get(i));
-                    }
-                }
-                adapter.setData(userListToLoad);
-                break;
-            case R.id.action_offers_service_users:
-                userListToLoad.clear();
-                for (int i = 0; i <userList.size() ; i++) {
-                    if(userList.get(i).getTypeUser().equals("OFRECE_SERVICIO")){
-                        userListToLoad.add(userList.get(i));
-                    }
-                }
-                adapter.setData(userListToLoad);
-                break;
-            case R.id.action_all_users:
-                adapter.setData(userList);
-                break;
-
+            //OPT OF MENU
         }
         return super.onOptionsItemSelected(item);
     }
+
 }

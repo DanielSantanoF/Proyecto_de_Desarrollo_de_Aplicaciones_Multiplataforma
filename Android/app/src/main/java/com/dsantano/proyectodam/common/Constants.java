@@ -13,5 +13,9 @@ public class Constants {
     public static final String FIREBASE_COLLECTION_USERS = "users";
     public static final String SHARED_PREFERENCES_USER_NAME = "userName";
     public static final String SHARED_PREFERENCES_USER_TYPE = "userType";
+    public static final String SHARED_PREFERENCES_USER_USERNAME = "userUserName";
+    public static final String SHARED_PREFERENCES_USER_EMAIL = "userEmail";
+    public static final String SHARED_PREFERENCES_USER_PHONE = "userPhone";
+    public static final String SHARED_PREFERENCES_USER_BIRTH_DATE = "userPhone";
 
 }

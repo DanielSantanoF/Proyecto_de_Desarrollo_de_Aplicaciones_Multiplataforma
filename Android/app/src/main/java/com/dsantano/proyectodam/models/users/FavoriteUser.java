@@ -1,11 +1,9 @@
 package com.dsantano.proyectodam.models.users;
 
-import com.dsantano.proyectodam.models.users.LocationOffered;
-import com.dsantano.proyectodam.models.users.User;
-import com.dsantano.proyectodam.models.users.UserAvatar;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -58,4 +56,9 @@ public class FavoriteUser {
     @SerializedName("avatar")
     @Expose
     public UserAvatar avatar;
+    @SerializedName("living_with")
+    @Expose
+    public String livingWith;
+
+    public List<String> palabrasClave = new ArrayList<>();
 }

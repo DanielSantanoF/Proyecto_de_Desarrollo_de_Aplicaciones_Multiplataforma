@@ -5,8 +5,14 @@
         android:id="@+id/action_change_password"
         android:title="@string/action_change_password" />
     <item
+        android:id="@+id/action_go_favorites"
+        android:title="@string/action_go_favorites" />
+    <item
         android:id="@+id/action_delete_avatar"
         android:title="@string/action_delete_avatar" />
+    <item
+        android:id="@+id/action_delete_living_with_profile"
+        android:title="@string/action_delete_living_with" />
     <item
         android:id="@+id/action_delete_me"
         android:title="@string/action_delete_me" />

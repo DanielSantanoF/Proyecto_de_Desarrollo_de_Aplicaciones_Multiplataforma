@@ -4,6 +4,9 @@ import com.dsantano.proyectodam.models.auth.UserLoginResponse;
 import com.dsantano.proyectodam.models.auth.UserRegisterResponse;
 import com.dsantano.proyectodam.models.auth.UserSendedToLogin;
 import com.dsantano.proyectodam.models.users.ChangePasswordSended;
+import com.dsantano.proyectodam.models.users.EditUserSended;
+import com.dsantano.proyectodam.models.users.UserIdSended;
+import com.dsantano.proyectodam.models.users.FavoriteUser;
 import com.dsantano.proyectodam.models.users.User;
 import com.dsantano.proyectodam.models.users.UserDetail;
 
@@ -52,6 +55,9 @@ public interface Service {
     @DELETE("/api/users/me")
     Call<ResponseBody> deleteMe();
 
+    @PUT("/api/users/me")
+    Call<User> putMe(@Body EditUserSended editUserSended);
+
     @PUT("/api/users/me/password")
     Call<User> putPassword(@Body ChangePasswordSended changePasswordSended);
 
@@ -60,5 +66,20 @@ public interface Service {
 
     @GET("/api/users/{id}")
     Call<UserDetail> getUsersById(@Path("id")String id);
+
+    @POST("/api/users/me/favorites")
+    Call<FavoriteUser> postNewFavorite(@Body UserIdSended userIdSended);
+
+    @GET("/api/users/me/favorites")
+    Call<FavoriteUser> getAllFavorites();
+
+    @DELETE("/api/users/me/favorites/{id}")
+    Call<User> deleteFavoriteById(@Path("id")String id);
+
+    @PUT("/api/users/me/livingWith")
+    Call<User> putLivingWith(@Body UserIdSended userIdSended);
+
+    @DELETE("/api/users/me/livingWit")
+    Call<User> deleteLivingWith(@Body UserIdSended userIdSended);
 
 }

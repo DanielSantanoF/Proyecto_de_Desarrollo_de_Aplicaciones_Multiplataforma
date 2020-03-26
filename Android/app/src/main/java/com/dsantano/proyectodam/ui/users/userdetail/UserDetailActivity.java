@@ -25,6 +25,7 @@ import com.dsantano.proyectodam.R;
 import com.dsantano.proyectodam.common.Constants;
 import com.dsantano.proyectodam.data.viewmodel.UserDetailViewModel;
 import com.dsantano.proyectodam.datepicker.DateTransformation;
+import com.dsantano.proyectodam.models.users.UserIdSended;
 import com.dsantano.proyectodam.models.users.UserDetail;
 
 import org.joda.time.LocalDate;
@@ -155,7 +156,19 @@ public class UserDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_add_favorite:
-                Toast.makeText(this, "ADD IT", Toast.LENGTH_SHORT).show();
+                UserIdSended userIdSended = new UserIdSended(userId);
+                userDetailViewModel.postNewFavorite(userIdSended);
+                Toast.makeText(this, getResources().getString(R.string.added_to_favorites), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_add_living_with:
+                UserIdSended userIdSended2 = new UserIdSended(userId);
+                userDetailViewModel.putLivingWith(userIdSended2);
+                Toast.makeText(this, getResources().getString(R.string.living_with_updated), Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.action_delete_living_with:
+                UserIdSended userIdSended3 = new UserIdSended(userId);
+                userDetailViewModel.deleteLivingWith(userIdSended3);
+                Toast.makeText(this, getResources().getString(R.string.living_with_deleted), Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onOptionsItemSelected(item);

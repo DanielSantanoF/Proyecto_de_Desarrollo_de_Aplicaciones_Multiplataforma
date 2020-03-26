@@ -46,4 +46,19 @@
     <string name="confirm">Confirmar</string>
     <string name="delete_me_title">¿Darse de baja?</string>
     <string name="delete_me_body">Si te das de baja perderas todos tus datos</string>
+    <string name="btn_confirm_edit_user_profile">Editar perfil</string>
+    <string name="action_searching_compani_users">Ver usuarios buscando compañía</string>
+    <string name="action_ofers_accomodation_users">Ver usuarios ofreciendo alojamiento</string>
+    <string name="action_young_users">Ver usuarios ofreciendo compañía</string>
+    <string name="action_offers_service_users">Ver usuarios ofreciendo servicio</string>
+    <string name="action_all_users">Ver todos los usuarios</string>
+    <string name="action_search">Buscar</string>
+    <string name="added_to_favorites">Añadido a favoritos</string>
+    <string name="action_add_living_with">Añadir como conviviendo</string>
+    <string name="living_with_updated">Usuario marcado como conviviendo</string>
+    <string name="living_with_deleted">Convivencia eliminada</string>
+    <string name="actually_not_living_with">Actualmente no convives con nadie</string>
+    <string name="action_delete_living_with">Eliminar convivencia</string>
+    <string name="action_go_favorites">Ver usuarios favoritos</string>
+    <string name="favorite_deleted">ELiminado de favoritos</string>
 </resources>
