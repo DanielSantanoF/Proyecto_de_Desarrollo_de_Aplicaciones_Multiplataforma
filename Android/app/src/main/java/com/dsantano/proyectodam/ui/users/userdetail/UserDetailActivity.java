@@ -57,7 +57,7 @@ public class UserDetailActivity extends AppCompatActivity {
         btnEmail = findViewById(R.id.imageButtonEmailUserDetails);
         btnPhone = findViewById(R.id.imageButtonPhoneUserDetail);
 
-        userId = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_ID).toString();
+        userId = getIntent().getExtras().get(Constants.PUT_EXTRA_USER_ID).toString();
         userDetailViewModel = new ViewModelProvider(this).get(UserDetailViewModel.class);
         userDetailViewModel.setUserId(userId);
         loadUser();
@@ -88,7 +88,7 @@ public class UserDetailActivity extends AppCompatActivity {
     }
 
     public void loadUser(){
-        userDetailViewModel.getTicketById().observe(this, new Observer<UserDetail>() {
+        userDetailViewModel.getUserById().observe(this, new Observer<UserDetail>() {
             @Override
             public void onChanged(UserDetail user) {
                 userLoaded = user;

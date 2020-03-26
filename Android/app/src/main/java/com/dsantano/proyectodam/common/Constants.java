@@ -9,13 +9,17 @@ public class Constants {
     public static final String USER_OFFERING_ACCOMMODATION = "OFRECE_ALOJAMIENTO";
     public static final String USER_OFFERING_COMPANY = "JOVEN";
     public static final String SHARED_PREFERENCES_AUTH_TOKEN = "authToken";
-    public static final String SHARED_PREFERENCES_USER_ID = "userId";
-    public static final String FIREBASE_COLLECTION_USERS = "users";
-    public static final String SHARED_PREFERENCES_USER_NAME = "userName";
+    public static final String SHARED_PREFERENCES_USER_ROLE = "userRole";
     public static final String SHARED_PREFERENCES_USER_TYPE = "userType";
-    public static final String SHARED_PREFERENCES_USER_USERNAME = "userUserName";
-    public static final String SHARED_PREFERENCES_USER_EMAIL = "userEmail";
-    public static final String SHARED_PREFERENCES_USER_PHONE = "userPhone";
-    public static final String SHARED_PREFERENCES_USER_BIRTH_DATE = "userPhone";
+    public static final String SHARED_PREFERENCES_USER_PERSONAL_ID = "userPersonalId";
+    public static final String PUT_EXTRA_USER_ID = "userId";
+    public static final String FIREBASE_COLLECTION_USERS = "users";
+    public static final String PUT_EXTRA_USER_NAME = "userName";
+    public static final String PUT_EXTRA_USER_TYPE = "userType";
+    public static final String PUT_EXTRA_USER_USERNAME = "userUserName";
+    public static final String PUT_EXTRA_USER_EMAIL = "userEmail";
+    public static final String PUT_EXTRA_USER_PHONE = "userPhone";
+    public static final String PUT_EXTRA_USER_BIRTH_DATE = "userPhone";
+    public static final String PUT_EXTRA_SERVICE_ID = "serviceId";
 
 }

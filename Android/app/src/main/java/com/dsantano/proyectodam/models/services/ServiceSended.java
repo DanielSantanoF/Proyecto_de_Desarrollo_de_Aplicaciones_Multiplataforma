@@ -3,9 +3,6 @@ package com.dsantano.proyectodam.models.services;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,14 +10,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Services {
-    @SerializedName("available")
-    @Expose
-    public Boolean available;
-    @SerializedName("_id")
-    @Expose
-    public String id;
-    @SerializedName("type_service")
+public class ServiceSended {
+    @SerializedName("typeService")
     @Expose
     public String typeService;
     @SerializedName("title")
@@ -29,9 +20,4 @@ public class Services {
     @SerializedName("description")
     @Expose
     public String description;
-    @SerializedName("user_offering_service")
-    @Expose
-    public String userOfferingService;
-
-    public List<String> palabrasClave = new ArrayList<>();
 }

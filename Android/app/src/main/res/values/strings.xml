@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">AgesTogether</string>
     <string name="title_home">Usuarios</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_dashboard">Servicios</string>
+    <string name="title_notifications">Localizaciones</string>
     <string name="btn_register">Registrarse</string>
     <string name="btn_login">Iniciar sesión</string>
     <string name="hint_username">Usuario</string>
@@ -37,7 +37,7 @@
     <string name="cancel">Cancelar</string>
     <string name="password_needed">Contraseña necesaria</string>
     <string name="confirm_password_needed">Repita su contraseña</string>
-    <string name="correct_update">Se ha actualizado correctamente</string>
+    <string name="correct_update">Se ha editado correctamente</string>
     <string name="error_in_update">Error al actualizar</string>
     <string name="change_password_title">Cambiar contraseña</string>
     <string name="change_password_body">Indique la nueva contraseña</string>
@@ -61,4 +61,28 @@
     <string name="action_delete_living_with">Eliminar convivencia</string>
     <string name="action_go_favorites">Ver usuarios favoritos</string>
     <string name="favorite_deleted">ELiminado de favoritos</string>
+    <string name="action_add_service">Añadir servicio</string>
+    <string name="action_my_services">Ver mis servicios</string>
+    <string name="action_all_services">Ver todos los servicios</string>
+    <string name="new_service_title">Crear nuevo servicio</string>
+    <string name="new_service_body">Indica los datos del servicio</string>
+    <string name="create">Crear</string>
+    <string name="hint_title">Nombre/Titulo</string>
+    <string name="hint_description">Descripción</string>
+    <string name="txt_select_type_service">Selecciona de que tipo es el servicio:</string>
+    <string name="do_buyout">Hacer compra</string>
+    <string name="transport">Transporte</string>
+    <string name="cook">Cocinar</string>
+    <string name="repair">Reparaciones</string>
+    <string name="title_needed">Titulo necesario</string>
+    <string name="description_needed">Descripcion necesaria</string>
+    <string name="create_correct">Se ha creado correctamente</string>
+    <string name="error_in_create">Error al crear</string>
+    <string name="txt_user_offering_service">Usuario ofreciendo el servicio:</string>
+    <string name="not_service_properati">No puedes borrar este servicio</string>
+    <string name="action_delete_service">Eliminar servicio</string>
+    <string name="service_deleted">Servicio eliminado</string>
+    <string name="action_update_service">Editar Servicio</string>
+    <string name="edit_service_title">Editar Servicio</string>
+    <string name="edit_service_body">Indique los nuevos datos del servicio</string>
 </resources>

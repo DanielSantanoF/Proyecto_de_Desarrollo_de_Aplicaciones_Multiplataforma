@@ -86,12 +86,12 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(UserProfileActivity.this, EditUserProfileActivity.class);
-                i.putExtra(Constants.SHARED_PREFERENCES_USER_NAME, userLoaded.getName());
-                i.putExtra(Constants.SHARED_PREFERENCES_USER_TYPE, userLoaded.getTypeUser());
-                i.putExtra(Constants.SHARED_PREFERENCES_USER_USERNAME, userLoaded.getUsername());
-                i.putExtra(Constants.SHARED_PREFERENCES_USER_EMAIL, userLoaded.getEmail());
-                i.putExtra(Constants.SHARED_PREFERENCES_USER_PHONE, userLoaded.getPhone());
-                i.putExtra(Constants.SHARED_PREFERENCES_USER_BIRTH_DATE, userLoaded.getDateOfBirth().split("T")[0]);
+                i.putExtra(Constants.PUT_EXTRA_USER_NAME, userLoaded.getName());
+                i.putExtra(Constants.PUT_EXTRA_USER_TYPE, userLoaded.getTypeUser());
+                i.putExtra(Constants.PUT_EXTRA_USER_USERNAME, userLoaded.getUsername());
+                i.putExtra(Constants.PUT_EXTRA_USER_EMAIL, userLoaded.getEmail());
+                i.putExtra(Constants.PUT_EXTRA_USER_PHONE, userLoaded.getPhone());
+                i.putExtra(Constants.PUT_EXTRA_USER_BIRTH_DATE, userLoaded.getDateOfBirth().split("T")[0]);
                 startActivity(i);
             }
         });

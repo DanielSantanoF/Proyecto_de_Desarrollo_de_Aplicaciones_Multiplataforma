@@ -1,8 +1,13 @@
 package com.dsantano.proyectodam.retrofit.service;
 
+import com.dsantano.proyectodam.models.Locations.LocationUser;
 import com.dsantano.proyectodam.models.auth.UserLoginResponse;
 import com.dsantano.proyectodam.models.auth.UserRegisterResponse;
 import com.dsantano.proyectodam.models.auth.UserSendedToLogin;
+import com.dsantano.proyectodam.models.services.NewServiceCreated;
+import com.dsantano.proyectodam.models.services.ServiceDetail;
+import com.dsantano.proyectodam.models.services.ServiceSended;
+import com.dsantano.proyectodam.models.services.Services;
 import com.dsantano.proyectodam.models.users.ChangePasswordSended;
 import com.dsantano.proyectodam.models.users.EditUserSended;
 import com.dsantano.proyectodam.models.users.UserIdSended;
@@ -81,5 +86,23 @@ public interface Service {
 
     @DELETE("/api/users/me/livingWit")
     Call<User> deleteLivingWith(@Body UserIdSended userIdSended);
+
+    @GET("/api/services")
+    Call<List<Services>> getAllServices();
+
+    @POST("/api/services")
+    Call<NewServiceCreated> postNewService(@Body ServiceSended serviceSended);
+
+    @GET("/api/services/{id}")
+    Call<ServiceDetail> getServiceById(@Path("id")String id);
+
+    @DELETE("/api/services/{id}")
+    Call<ResponseBody> deleteServiceById(@Path("id")String id);
+
+    @PUT("/api/services/{id}")
+    Call<ServiceDetail> putServiceById(@Path("id")String id, @Body ServiceSended serviceSended);
+
+    @GET("/api/locations")
+    Call<List<LocationUser>> getAllLocations();
 
 }

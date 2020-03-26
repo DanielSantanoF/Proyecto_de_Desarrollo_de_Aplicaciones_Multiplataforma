@@ -9,9 +9,12 @@ import android.view.MenuItem;
 
 import com.dsantano.proyectodam.R;
 import com.dsantano.proyectodam.common.Constants;
+import com.dsantano.proyectodam.listeners.IAllServicesListener;
 import com.dsantano.proyectodam.listeners.IAllUsersListener;
+import com.dsantano.proyectodam.models.services.Services;
 import com.dsantano.proyectodam.models.users.User;
 import com.dsantano.proyectodam.ui.auth.LoginActivity;
+import com.dsantano.proyectodam.ui.services.servicedetail.ServiceDetailActivity;
 import com.dsantano.proyectodam.ui.users.userdetail.UserDetailActivity;
 import com.dsantano.proyectodam.ui.users.userprofile.UserProfileActivity;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -29,7 +32,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class MainActivity extends AppCompatActivity implements IAllUsersListener {
+public class MainActivity extends AppCompatActivity implements IAllUsersListener, IAllServicesListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +95,14 @@ public class MainActivity extends AppCompatActivity implements IAllUsersListener
     @Override
     public void onAllUsersItemClick(User user) {
         Intent i = new Intent(MainActivity.this, UserDetailActivity.class);
-        i.putExtra(Constants.SHARED_PREFERENCES_USER_ID, user.id);
+        i.putExtra(Constants.PUT_EXTRA_USER_ID, user.id);
+        startActivity(i);
+    }
+
+    @Override
+    public void onAllServicesItemClick(Services services) {
+        Intent i = new Intent(MainActivity.this, ServiceDetailActivity.class);
+        i.putExtra(Constants.PUT_EXTRA_SERVICE_ID, services.id);
         startActivity(i);
     }
 }

@@ -21,7 +21,7 @@ public class UserDetailViewModel extends AndroidViewModel {
         userRepository = new UserRepository();
     }
 
-    public MutableLiveData<UserDetail> getTicketById(){
+    public MutableLiveData<UserDetail> getUserById(){
         userById = userRepository.getUserById(userId);
         return userById;
     }

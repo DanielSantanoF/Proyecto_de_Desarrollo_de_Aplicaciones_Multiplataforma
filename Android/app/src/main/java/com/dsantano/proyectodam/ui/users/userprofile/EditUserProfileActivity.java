@@ -20,7 +20,6 @@ import com.dsantano.proyectodam.datepicker.DateTransformation;
 import com.dsantano.proyectodam.datepicker.DialogDatePickerFragment;
 import com.dsantano.proyectodam.datepicker.IDatePickerListener;
 import com.dsantano.proyectodam.models.users.EditUserSended;
-import com.dsantano.proyectodam.ui.auth.RegisterActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +41,12 @@ public class EditUserProfileActivity extends AppCompatActivity implements IDateP
         setContentView(R.layout.activity_edit_user_profile);
 
         userMeViewModel = new ViewModelProvider(this).get(UserMeViewModel.class);
-        name = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_NAME).toString();
-        typeUserSelected = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_TYPE).toString();
-        username = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_USERNAME).toString();
-        email = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_EMAIL).toString();
-        phone = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_PHONE).toString();
-        dateSelected = getIntent().getExtras().get(Constants.SHARED_PREFERENCES_USER_BIRTH_DATE).toString();
+        name = getIntent().getExtras().get(Constants.PUT_EXTRA_USER_NAME).toString();
+        typeUserSelected = getIntent().getExtras().get(Constants.PUT_EXTRA_USER_TYPE).toString();
+        username = getIntent().getExtras().get(Constants.PUT_EXTRA_USER_USERNAME).toString();
+        email = getIntent().getExtras().get(Constants.PUT_EXTRA_USER_EMAIL).toString();
+        phone = getIntent().getExtras().get(Constants.PUT_EXTRA_USER_PHONE).toString();
+        dateSelected = getIntent().getExtras().get(Constants.PUT_EXTRA_USER_BIRTH_DATE).toString();
 
 
         edUsername = findViewById(R.id.editTextUsernameRegister);

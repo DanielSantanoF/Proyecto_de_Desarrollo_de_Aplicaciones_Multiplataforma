@@ -22,7 +22,7 @@ public class ShowFavoriteUsersActivity extends AppCompatActivity implements IFav
     @Override
     public void onFavoriteUsersItemClick(User user) {
         Intent i = new Intent(ShowFavoriteUsersActivity.this, UserDetailActivity.class);
-        i.putExtra(Constants.SHARED_PREFERENCES_USER_ID, user.id);
+        i.putExtra(Constants.PUT_EXTRA_USER_ID, user.id);
         startActivity(i);
     }
 }

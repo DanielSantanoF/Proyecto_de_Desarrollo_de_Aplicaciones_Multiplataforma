@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="8dp"
+    tools:context=".ui.services.servicedetail.ServiceDetailActivity">
+
+    <ImageView
+        android:id="@+id/imageViewTypeServiceDetail"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_launcher" />
+
+    <TextView
+        android:id="@+id/textViewTitleServiceDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textColor="@color/design_default_color_on_secondary"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTypeServiceDetail" />
+
+    <TextView
+        android:id="@+id/textViewTypeServiceDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewTitleServiceDetail"
+        app:layout_constraintStart_toStartOf="@+id/textViewTitleServiceDetail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitleServiceDetail" />
+
+    <TextView
+        android:id="@+id/textViewUserOfferingServiceDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/txt_user_offering_service"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/textViewTypeServiceDetail"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTypeServiceDetail" />
+
+    <ImageButton
+        android:id="@+id/imageButtonUserOfferingServiceDetail"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/round_bg_primary"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewUserOfferingServiceDetail"
+        app:layout_constraintStart_toEndOf="@+id/textViewUserOfferingServiceDetail"
+        app:layout_constraintTop_toTopOf="@+id/textViewUserOfferingServiceDetail"
+        app:srcCompat="@drawable/ic_remove_red_eye_white_24dp" />
+
+    <TextView
+        android:id="@+id/textViewDescriptionServiceDetail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:text="TextView"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewUserOfferingServiceDetail" />
+</androidx.constraintlayout.widget.ConstraintLayout>

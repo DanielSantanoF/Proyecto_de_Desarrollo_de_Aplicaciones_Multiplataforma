@@ -146,12 +146,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<UserLoginResponse> call, Response<UserLoginResponse> response) {
                 if (response.isSuccessful()) {
                     SharedPreferencesManager.setStringValue(Constants.SHARED_PREFERENCES_AUTH_TOKEN,response.body().getToken());
+                    SharedPreferencesManager.setStringValue(Constants.SHARED_PREFERENCES_USER_ROLE,response.body().getRole());
+                    SharedPreferencesManager.setStringValue(Constants.SHARED_PREFERENCES_USER_TYPE,response.body().getTypeUser());
+                    SharedPreferencesManager.setStringValue(Constants.SHARED_PREFERENCES_USER_PERSONAL_ID,response.body().getId());
                     Intent i =  new Intent(LoginActivity.this, MainActivity.class);
                     startActivity(i);
                     finish();
                 }else{
                     Toast.makeText(MyApp.getContext(), ""+response.message(), Toast.LENGTH_SHORT).show();
-                    Log.i("apiLogin", "Entra en onResponse ero da error");
+                    Log.i("apiLogin", "Entra en onResponse pero da error");
                 }
             }
 

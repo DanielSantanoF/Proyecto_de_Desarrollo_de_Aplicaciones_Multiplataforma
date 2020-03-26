@@ -62,6 +62,8 @@ let controller = {
                 res.json({
                     username: user.username,
                     role: user.role,
+                    type_user: user.type_user,
+                    id: user.id,
                     token: token
                 });
             }

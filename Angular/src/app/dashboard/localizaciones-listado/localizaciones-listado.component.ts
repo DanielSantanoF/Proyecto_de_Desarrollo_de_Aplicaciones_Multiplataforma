@@ -16,6 +16,7 @@ export class LocalizacionesListadoComponent implements OnInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   dataSource = new MatTableDataSource<LocationUser>();
   displayedColumns: string[] = ['country', 'city', 'street', 'available', 'acciones'];
+  listLoaded = [];
 
   constructor(private router: Router,
     private locationsService: LocationsService,
@@ -37,7 +38,12 @@ export class LocalizacionesListadoComponent implements OnInit {
 
   getAllLocations() {
     this.locationsService.getAllLocations().subscribe(resp => {
-      this.dataSource = new MatTableDataSource<LocationUser>(resp);
+      for (let i = 0; i < resp.length; i++) {
+        if(resp[i].location_offered != null){
+          this.listLoaded.push(resp[i])
+        }
+      }
+      this.dataSource = new MatTableDataSource<LocationUser>(this.listLoaded);
     })
   }
 
