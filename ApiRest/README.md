@@ -1,7 +1,7 @@
 # Proyecto DAM
 Api Rest en NodeJs con MongoDB y Mongoose para el Proyecto de Desarrollo de Aplicaciones Multiplataforma.
 * Se encuentra despleguada en la url `https://dsantanoproyectodam.herokuapp.com/`
-
+* En el repositorio se encuentra una colección de postman para el uso de esta ApiRest en formato .json [Ver documento](https://github.com/DanielSantanoF/Proyecto_de_Desarrollo_de_Aplicaciones_Multiplataforma/blob/master/ProyectoDAM.postman_collection.json) que puedes importar a postman para su uso
 ***
 
 
