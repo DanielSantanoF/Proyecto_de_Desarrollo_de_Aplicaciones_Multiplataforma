@@ -39,7 +39,7 @@ let controller = {
                                 User.find({ _id: userUpdated._id }, { username: 1, avatar: 1, date_of_birth: 1, location_offered: 1 })
                                     .populate({ path: 'location_offered', model: 'LocationOffered' })
                                     .exec()
-                                    .then(x => res.status(200).json(x))
+                                    .then(x => res.status(201).json(x))
                                     .catch(err => next(new ErrorHandler(500, err.message)));
                             }
                         });

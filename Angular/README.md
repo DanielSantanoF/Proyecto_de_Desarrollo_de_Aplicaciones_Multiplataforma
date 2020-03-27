@@ -2,7 +2,7 @@
 Aplicación de Angular de administración del proyecto, solo tienen acceso al hacer login los usuarios que sean administradores, por lo tanto es una aplicación web totalmente de gestión
 * Los datos de firebase se encuentran en `/src/environments/environment.ts` son necesarios para poder usar la aplicación
 * La url del ApiRest se encuentra indicada en cada Servicio de la applicación de angular en `src/app/services/*` en la constante `API_REST_URL` en este caso es `https://dsantanoproyectodam.herokuapp.com/` dado que tenemos el ApiRest desplegada en Heroku
-* Esta aplicación se encuentra disponible mediante el hosting de firebase => [Ver aplicación](https://url "proyectoDAM")
+* Esta aplicación se encuentra disponible mediante el hosting de firebase => [Ver aplicación](https://dsantanoproyectodam.firebaseapp.com/session/signin "proyectoDAM")
 
 ## Datos de acceso de prueba
 #### Admin
