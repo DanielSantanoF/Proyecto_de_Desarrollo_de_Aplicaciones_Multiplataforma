@@ -9,8 +9,9 @@ import { Observable } from 'rxjs';
 import { LoginResponse } from '../models/loginResponse.interface';
 import { LoginDto } from '../models/login.dto';
 
-export const collectionNameProfesores = 'users';
-export const API_REST_UTL = 'http://localhost:3000/';
+export const collectionNameUsers = 'users';
+//export const API_REST_URL = 'http://localhost:3000/';
+export const API_REST_URL = 'https://dsantanoproyectodam.herokuapp.com/';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -31,7 +32,7 @@ export class AuthService {
     return this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
   }
 
-  logout(){UserGoogleDto
+  logout(){
     localStorage.removeItem('uid');
     localStorage.removeItem('nombre');
     localStorage.removeItem('email');
@@ -55,20 +56,20 @@ export class AuthService {
 
   public getUser(){
     const uid = localStorage.getItem('uid');
-    return this.dbFireStore.collection(collectionNameProfesores).doc<UsersFirebase>(uid).valueChanges();
+    return this.dbFireStore.collection(collectionNameUsers).doc<UsersFirebase>(uid).valueChanges();
   }
 
   public saveUserLogged(id, dto: UserGoogleDto){
-    return this.dbFireStore.collection<UsersFirebase>(collectionNameProfesores).doc(id).set(dto.transformarDto());
+    return this.dbFireStore.collection<UsersFirebase>(collectionNameUsers).doc(id).set(dto.transformarDto());
   }
 
   public updateUserLogged(id, dto: UserGoogleDto){
-    return this.dbFireStore.collection<UsersFirebase>(collectionNameProfesores).doc(id).update(dto.transformarDto());
+    return this.dbFireStore.collection<UsersFirebase>(collectionNameUsers).doc(id).update(dto.transformarDto());
   }
 
   apiRestSignIn(username: string, password: string): Observable<LoginResponse>{
     const dto = new LoginDto(username, password);
-    return this.http.post<LoginResponse>(API_REST_UTL + 'api/login', dto, httpOptions)
+    return this.http.post<LoginResponse>(API_REST_URL + 'api/login', dto, httpOptions)
   }
 
   getHttpOptionsWithToken(){

@@ -61,14 +61,6 @@ public class MainActivity extends AppCompatActivity implements IAllUsersListener
                 .build();
         GoogleSignInClient mGoogleLogin = GoogleSignIn.getClient(this, googleSignInOptions);
         FirebaseAuth.getInstance().signOut();
-        mGoogleLogin.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                Intent i =  new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(i);
-                finish();
-            }
-        });
     }
 
     @Override
@@ -82,6 +74,12 @@ public class MainActivity extends AppCompatActivity implements IAllUsersListener
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_logout:
+                if(FirebaseAuth.getInstance().getCurrentUser() != null){
+                    String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    if(uid != null){
+                        googleLogOut();
+                    }
+                }
                 SharedPreferences settings = this.getSharedPreferences(Constants.APP_SETTINGS_FILE, Context.MODE_PRIVATE);
                 settings.edit().clear().apply();
                 Intent i = new Intent(this, LoginActivity.class);

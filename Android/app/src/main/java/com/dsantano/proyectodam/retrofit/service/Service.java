@@ -47,6 +47,16 @@ public interface Service {
                                         @Part("typeUser") RequestBody typeUser,
                                         @Part("dateOfBirth") RequestBody dateOfBirth,
                                         @Part MultipartBody.Part avatar);
+    @Multipart
+    @POST("/api/register")
+    Call<UserRegisterResponse> registerWithNoAvatar(@Part("username") RequestBody username,
+                                        @Part("email") RequestBody email,
+                                        @Part("name") RequestBody name,
+                                        @Part("password") RequestBody password,
+                                        @Part("confirmPassword") RequestBody confirmPassword,
+                                        @Part("phone") RequestBody phone,
+                                        @Part("typeUser") RequestBody typeUser,
+                                        @Part("dateOfBirth") RequestBody dateOfBirth);
 
     @GET("/api/users/me")
     Call<User> getMe();

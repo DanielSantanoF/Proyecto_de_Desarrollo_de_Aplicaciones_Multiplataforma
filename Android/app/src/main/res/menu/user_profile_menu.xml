@@ -16,6 +16,9 @@
         android:id="@+id/action_delete_avatar"
         android:title="@string/action_delete_avatar" />
     <item
+        android:id="@+id/action_go_living_with"
+        android:title="@string/action_go_living_with" />
+    <item
         android:id="@+id/action_delete_living_with_profile"
         android:title="@string/action_delete_living_with" />
     <item

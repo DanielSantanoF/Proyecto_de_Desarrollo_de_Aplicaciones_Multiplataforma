@@ -107,4 +107,8 @@
     <string name="edit_location_title">Editar localización</string>
     <string name="edit_location_body">Indique los nuevos datos de la localización ofrecida</string>
     <string name="location_deleted">Localización eliminada</string>
+    <string name="new_user_google_login">Contraseña por defecto: 12345678, vaya a su perfil y edite los campos de su usuario que vea combenientes</string>
+    <string name="new_user_google_register">Registro con google completado, espera a que un admin te valide el usuario para poder acceder</string>
+    <string name="login_token_expired">Vuelva a iniciar sesión</string>
+    <string name="action_go_living_with">Ver con quien convivo</string>
 </resources>

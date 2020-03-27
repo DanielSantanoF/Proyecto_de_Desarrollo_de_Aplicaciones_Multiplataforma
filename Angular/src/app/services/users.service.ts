@@ -12,7 +12,8 @@ import { ValidatedDto } from '../models/validated.dto';
 import { ActiveDto } from '../models/Active.dto';
 
 const collectionName = 'users';
-export const API_REST_UTL = 'http://localhost:3000/';
+//export const API_REST_URL = 'http://localhost:3000/';
+export const API_REST_URL = 'https://dsantanoproyectodam.herokuapp.com/';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -34,30 +35,30 @@ export class UsersService {
   }
 
   getAllUsers(): Observable<UserApiRest[]>{
-    return this.http.get<UserApiRest[]>(API_REST_UTL + 'api/users', this.authService.getHttpOptionsWithToken())
+    return this.http.get<UserApiRest[]>(API_REST_URL + 'api/users', this.authService.getHttpOptionsWithToken())
   }
 
   putUserById(id: string, dto: EditUserDto): Observable<UserApiRest>{
-    return this.http.put<UserApiRest>(API_REST_UTL + `api/users/${id}`, dto, this.authService.getHttpOptionsWithToken())
+    return this.http.put<UserApiRest>(API_REST_URL + `api/users/${id}`, dto, this.authService.getHttpOptionsWithToken())
   }
 
   deleteUserById(id: string): Observable<Object>{
-    return this.http.delete<Object>(API_REST_UTL + `api/users/${id}`, this.authService.getHttpOptionsWithToken())
+    return this.http.delete<Object>(API_REST_URL + `api/users/${id}`, this.authService.getHttpOptionsWithToken())
   }
 
   putResetPassword(id: string): Observable<UserApiRest>{
     const dto = new PasswordsDto("12345678", "12345678");
-    return this.http.put<UserApiRest>(API_REST_UTL + `api/users/password/${id}`, dto, this.authService.getHttpOptionsWithToken())
+    return this.http.put<UserApiRest>(API_REST_URL + `api/users/password/${id}`, dto, this.authService.getHttpOptionsWithToken())
   }
 
   putValidated(id: string, state: boolean): Observable<UserApiRest>{
     const dto = new ValidatedDto(state);
-    return this.http.put<UserApiRest>(API_REST_UTL + `api/users/admin/validate/${id}`, dto, this.authService.getHttpOptionsWithToken())
+    return this.http.put<UserApiRest>(API_REST_URL + `api/users/admin/validate/${id}`, dto, this.authService.getHttpOptionsWithToken())
   }
 
   putActive(id: string, state: boolean): Observable<UserApiRest>{
     const dto = new ActiveDto(state);
-    return this.http.put<UserApiRest>(API_REST_UTL + `api/users/admin/active/${id}`, dto, this.authService.getHttpOptionsWithToken())
+    return this.http.put<UserApiRest>(API_REST_URL + `api/users/admin/active/${id}`, dto, this.authService.getHttpOptionsWithToken())
   }
 
 }

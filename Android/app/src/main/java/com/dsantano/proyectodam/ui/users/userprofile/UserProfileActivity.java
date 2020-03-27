@@ -32,6 +32,7 @@ import com.dsantano.proyectodam.datepicker.DateTransformation;
 import com.dsantano.proyectodam.models.users.User;
 import com.dsantano.proyectodam.models.users.UserIdSended;
 import com.dsantano.proyectodam.ui.users.allfavoriteusers.ShowFavoriteUsersActivity;
+import com.dsantano.proyectodam.ui.users.userdetail.UserDetailActivity;
 
 import org.joda.time.LocalDate;
 
@@ -258,12 +259,20 @@ public class UserProfileActivity extends AppCompatActivity {
                     Toast.makeText(this, getResources().getString(R.string.actually_not_living_with), Toast.LENGTH_SHORT).show();
                 }
                 break;
+            case R.id.action_go_living_with:
+                if(userLoaded.getLivingWith() != null){
+                    Intent intentLivingWith = new Intent(UserProfileActivity.this, UserDetailActivity.class);
+                    intentLivingWith.putExtra(Constants.PUT_EXTRA_USER_ID, userLoaded.getLivingWith());
+                    startActivity(intentLivingWith);
+                } else {
+                    Toast.makeText(this, getResources().getString(R.string.actually_not_living_with), Toast.LENGTH_SHORT).show();
+                }
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
     public void performFileSearch() {
-
         Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         intent.setType("image/*");
@@ -273,7 +282,6 @@ public class UserProfileActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         if (requestCode == READ_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             Uri uri = null;
             if (data != null) {

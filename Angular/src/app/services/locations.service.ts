@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { LocationUser } from '../models/locationUser.interface';
 import { EditLocationDto } from '../models/editLocation.dto';
 
-export const API_REST_UTL = 'http://localhost:3000/';
+//export const API_REST_URL = 'http://localhost:3000/';
+export const API_REST_URL = 'https://dsantanoproyectodam.herokuapp.com/';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -22,15 +23,15 @@ export class LocationsService {
     private authService: AuthService) { }
 
   getAllLocations(): Observable<LocationUser[]> {
-    return this.http.get<LocationUser[]>(API_REST_UTL + 'api/locations', this.authService.getHttpOptionsWithToken())
+    return this.http.get<LocationUser[]>(API_REST_URL + 'api/locations', this.authService.getHttpOptionsWithToken())
   }
 
   deleteLocationById(id: string): Observable<Object>{
-    return this.http.delete<Object>(API_REST_UTL + `api/locations/${id}`, this.authService.getHttpOptionsWithToken())
+    return this.http.delete<Object>(API_REST_URL + `api/locations/${id}`, this.authService.getHttpOptionsWithToken())
   }
 
   putLocationById(id: string, dto: EditLocationDto): Observable<Object>{
-    return this.http.put<Object>(API_REST_UTL + `api/locations/${id}`, dto, this.authService.getHttpOptionsWithToken())
+    return this.http.put<Object>(API_REST_URL + `api/locations/${id}`, dto, this.authService.getHttpOptionsWithToken())
   }
 
 }

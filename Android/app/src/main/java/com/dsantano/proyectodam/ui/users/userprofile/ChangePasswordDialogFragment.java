@@ -12,14 +12,27 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.dsantano.proyectodam.R;
+import com.dsantano.proyectodam.common.Constants;
 import com.dsantano.proyectodam.common.MyApp;
 import com.dsantano.proyectodam.models.users.ChangePasswordSended;
 import com.dsantano.proyectodam.models.users.User;
+import com.dsantano.proyectodam.models.users.UserFirebase;
 import com.dsantano.proyectodam.retrofit.service.Service;
 import com.dsantano.proyectodam.retrofit.servicegenerators.TokenServiceGenerator;
+import com.dsantano.proyectodam.ui.auth.LoginActivity;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +45,10 @@ public class ChangePasswordDialogFragment extends DialogFragment {
     Context ctx;
     Service service;
     Activity act;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    UserFirebase user;
+    Map<String, Object> userfb;
+    String uid, password, confirmPassword;
 
     public ChangePasswordDialogFragment(Context ctx) {
         this.ctx = ctx;
@@ -56,8 +73,8 @@ public class ChangePasswordDialogFragment extends DialogFragment {
         builder.setPositiveButton(getResources().getString(R.string.update), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                String password = etPassword.getText().toString();
-                String confirmPassword = etConfirmPassword.getText().toString();
+                password = etPassword.getText().toString();
+                confirmPassword = etConfirmPassword.getText().toString();
                 ChangePasswordSended changePasswordSended = new ChangePasswordSended(password, confirmPassword);
 
                 if(password.isEmpty() || confirmPassword.isEmpty()) {
@@ -74,13 +91,40 @@ public class ChangePasswordDialogFragment extends DialogFragment {
                     call.enqueue(new Callback<User>() {
                         @Override
                         public void onResponse(Call<User> call, Response<User> response) {
-                            //Toast.makeText(getActivity(), getResources().getString(R.string.correct_update), Toast.LENGTH_SHORT).show();
                             Log.d("changePassword", "changed");
+                            if(FirebaseAuth.getInstance().getCurrentUser() != null) {
+                                uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                                if (uid != null) {
+                                    DocumentReference docIdRef = db.collection(Constants.FIREBASE_COLLECTION_USERS).document(uid);
+                                    docIdRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                            if (task.isSuccessful()) {
+                                                DocumentSnapshot document = task.getResult();
+                                                if (document.exists()) {
+                                                    user = document.toObject(UserFirebase.class);
+                                                    if (user != null) {
+                                                        userfb = new HashMap<>();
+                                                        userfb.put("password", password);
+                                                        db.collection(Constants.FIREBASE_COLLECTION_USERS)
+                                                                .document(uid)
+                                                                .update(userfb);
+                                                    }
+                                                    Log.d("FB", "Document exists!");
+                                                } else {
+                                                    Log.d("FB", "Document does not exist!");
+                                                }
+                                            } else {
+                                                Log.d("FB", "Failed with: ", task.getException());
+                                            }
+                                        }
+                                    });
+                                }
+                            }
                         }
 
                         @Override
                         public void onFailure(Call<User> call, Throwable t) {
-                            //Toast.makeText(getActivity(), getResources().getString(R.string.error_in_update), Toast.LENGTH_SHORT).show();
                             Log.d("changePassword", "onFailure: " + t.getMessage());
                         }
                     });

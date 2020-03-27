@@ -48,26 +48,20 @@ export class SigninComponent implements OnInit {
         resp.user.email,
         resp.user.photoURL
       );
-      if(resp.user.email == "santano.fedan20@triana.salesianos.edu"){
-        localStorage.setItem('role', "TRUE")
-      } else {
-        localStorage.setItem('role', "FALSE")
-      }
       this.authService.getUser().subscribe(usuarioEncontrado => {
         if(usuarioEncontrado){
-          const dto = new UserGoogleDto( resp.user.displayName, resp.user.email, resp.user.photoURL);
+          const dto = new UserGoogleDto(resp.user.email, resp.user.uid);
           this.authService.updateUserLogged(resp.user.uid, dto).then(resp2 => {
-            this.router.navigate(['/']);
+            this.apirestSignInByGoogle(usuarioEncontrado.username, usuarioEncontrado.password);
           }).catch(err => {
             this._snackBar.open("Error al iniciar sesión", err);
           });
         } else {
-          const dto2 = new UserGoogleDto(resp.user.displayName, resp.user.email, resp.user.photoURL);
-          this.authService.saveUserLogged(resp.user.uid, dto2).then(resp3 => {
-            this.router.navigate(['/']);
-          }).catch(err => {
-            this._snackBar.open("Error al iniciar sesión", err);
-          })
+            this.authService.logout()
+            .then(x => {
+              this._snackBar.open("No tienes acceso permitido");
+            })
+            .catch(err => {});
         }
       });
     }).catch(err =>{
@@ -75,12 +69,35 @@ export class SigninComponent implements OnInit {
     })
   }
 
+  apirestSignInByGoogle(username: string, password: string){
+    this.authService.apiRestSignIn(username, password).subscribe(resp => {
+      localStorage.setItem('token', resp.token)
+      localStorage.setItem('username', resp.username)
+      localStorage.setItem('role', resp.role)
+      if(resp.role != "ADMIN"){
+        this.signOut();
+      }
+      this.router.navigate(['/']);
+    });
+  }
+
   apirestSignIn(){
     this.authService.apiRestSignIn(this.username, this.password).subscribe(resp => {
       localStorage.setItem('token', resp.token)
       localStorage.setItem('username', resp.username)
       localStorage.setItem('role', resp.role)
+      if(resp.role != "ADMIN"){
+        this.signOut();
+      }
       this.router.navigate(['/']);
+    });
+  }
+
+  signOut(){
+    this.authService.logout().then(resp => {
+      this._snackBar.open("No tienes acceso permitido");
+    }).catch(err => {
+      this._snackBar.open("Error al cerrar sesión", err);
     });
   }
 

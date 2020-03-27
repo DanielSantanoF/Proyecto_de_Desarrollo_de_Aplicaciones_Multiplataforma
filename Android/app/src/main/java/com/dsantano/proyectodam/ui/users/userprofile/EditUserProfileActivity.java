@@ -102,6 +102,10 @@ public class EditUserProfileActivity extends AppCompatActivity implements IDateP
         btnConfirmEdit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                username = edUsername.getText().toString();
+                email = edEmail.getText().toString();
+                name = edName.getText().toString();
+                phone = edPhone.getText().toString();
                 EditUserSended editUserSended = new EditUserSended(username, email, phone, name, typeUserSelected, dateSelected);
                 userMeViewModel.updateMe(editUserSended);
                 finish();

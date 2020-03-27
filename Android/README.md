@@ -8,8 +8,29 @@ Este proyecto consiste en la implementación de una app para Android que da acce
 ***
 
 ### Datos de acceso de prueba
-* Email: admin@administrador.com
-* Contraseña: 12345678
+#### Usuario
+* Username: username
+* Contraseña: 123456
+#### Admin
+* Username: admin
+* Contraseña: 123456
+
+***
+
+#### ApiRest:
+* La aplicación cuenta con el perfil de usuario desde donde se puede gestionar todo lo necesario
+* Listados de usuarios, servicios y localizaciones
+* Todas las opciones CRUD de cada listado asi como modelo implementado en android
+
+***
+
+#### Firebase:
+* La aplicación cuenta con el login de Google con Firebase
+
+***
+
+#### Google Maps:
+* Se usa para mostrar la ciudad donde se encuentra la localización ofrecida por el usuario.
 
 ***
 
