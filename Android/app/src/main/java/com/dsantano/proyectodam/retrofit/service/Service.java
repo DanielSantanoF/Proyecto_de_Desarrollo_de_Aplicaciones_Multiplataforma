@@ -1,5 +1,6 @@
 package com.dsantano.proyectodam.retrofit.service;
 
+import com.dsantano.proyectodam.models.Locations.LocationSended;
 import com.dsantano.proyectodam.models.Locations.LocationUser;
 import com.dsantano.proyectodam.models.auth.UserLoginResponse;
 import com.dsantano.proyectodam.models.auth.UserRegisterResponse;
@@ -84,8 +85,8 @@ public interface Service {
     @PUT("/api/users/me/livingWith")
     Call<User> putLivingWith(@Body UserIdSended userIdSended);
 
-    @DELETE("/api/users/me/livingWit")
-    Call<User> deleteLivingWith(@Body UserIdSended userIdSended);
+    @DELETE("/api/users/me/livingWit/{id}")
+    Call<User> deleteLivingWith(@Path("id")String id);
 
     @GET("/api/services")
     Call<List<Services>> getAllServices();
@@ -104,5 +105,17 @@ public interface Service {
 
     @GET("/api/locations")
     Call<List<LocationUser>> getAllLocations();
+
+    @GET("/api/locations/{id}")
+    Call<LocationUser> getLocationById(@Path("id")String id);
+
+    @POST("/api/locations")
+    Call<LocationUser> postNewLocation(@Body LocationSended locationSended);
+
+    @PUT("/api/locations/{id}")
+    Call<LocationUser> putLocationById(@Path("id")String id, @Body LocationSended locationSended);
+
+    @DELETE("/api/locations/{id}")
+    Call<ResponseBody> deleteLocationById(@Path("id")String id);
 
 }

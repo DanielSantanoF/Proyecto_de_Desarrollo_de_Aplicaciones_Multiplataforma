@@ -9,11 +9,15 @@ import android.view.MenuItem;
 
 import com.dsantano.proyectodam.R;
 import com.dsantano.proyectodam.common.Constants;
+import com.dsantano.proyectodam.common.SharedPreferencesManager;
+import com.dsantano.proyectodam.listeners.IAllLocationsListener;
 import com.dsantano.proyectodam.listeners.IAllServicesListener;
 import com.dsantano.proyectodam.listeners.IAllUsersListener;
+import com.dsantano.proyectodam.models.Locations.LocationUser;
 import com.dsantano.proyectodam.models.services.Services;
 import com.dsantano.proyectodam.models.users.User;
 import com.dsantano.proyectodam.ui.auth.LoginActivity;
+import com.dsantano.proyectodam.ui.locations.locationdetail.LocationDetailActivity;
 import com.dsantano.proyectodam.ui.services.servicedetail.ServiceDetailActivity;
 import com.dsantano.proyectodam.ui.users.userdetail.UserDetailActivity;
 import com.dsantano.proyectodam.ui.users.userprofile.UserProfileActivity;
@@ -32,7 +36,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-public class MainActivity extends AppCompatActivity implements IAllUsersListener, IAllServicesListener {
+public class MainActivity extends AppCompatActivity implements IAllUsersListener, IAllServicesListener, IAllLocationsListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,8 +105,17 @@ public class MainActivity extends AppCompatActivity implements IAllUsersListener
 
     @Override
     public void onAllServicesItemClick(Services services) {
+        SharedPreferencesManager.setStringValue(Constants.SHARED_PREFERENCES_SERVICE_USER_ID, services.getUserOfferingService());
         Intent i = new Intent(MainActivity.this, ServiceDetailActivity.class);
         i.putExtra(Constants.PUT_EXTRA_SERVICE_ID, services.id);
+        startActivity(i);
+    }
+
+    @Override
+    public void onAllLocationsItemClick(LocationUser locationUser) {
+        SharedPreferencesManager.setStringValue(Constants.SHARED_PREFERENCES_LOCATION_USER_ID, locationUser.getId());
+        Intent i = new Intent(MainActivity.this, LocationDetailActivity.class);
+        i.putExtra(Constants.PUT_EXTRA_LOCATION_ID, locationUser.getLocationOffered().getId());
         startActivity(i);
     }
 }

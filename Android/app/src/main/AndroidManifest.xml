@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.services.servicedetail.ServiceDetailActivity"></activity>
+        <activity android:name=".ui.locations.locationdetail.LocationDetailActivity"></activity>
+        <activity android:name=".ui.services.servicedetail.ServiceDetailActivity" />
         <activity android:name=".ui.users.allfavoriteusers.ShowFavoriteUsersActivity" />
         <activity android:name=".ui.users.userprofile.EditUserProfileActivity" />
         <activity android:name=".ui.users.userprofile.UserProfileActivity" />

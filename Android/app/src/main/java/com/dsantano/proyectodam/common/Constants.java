@@ -21,5 +21,8 @@ public class Constants {
     public static final String PUT_EXTRA_USER_PHONE = "userPhone";
     public static final String PUT_EXTRA_USER_BIRTH_DATE = "userPhone";
     public static final String PUT_EXTRA_SERVICE_ID = "serviceId";
+    public static final String SHARED_PREFERENCES_SERVICE_USER_ID = "serviceUserId";
+    public static final String PUT_EXTRA_LOCATION_ID = "locationId";
+    public static final String SHARED_PREFERENCES_LOCATION_USER_ID = "locationUserId";
 
 }

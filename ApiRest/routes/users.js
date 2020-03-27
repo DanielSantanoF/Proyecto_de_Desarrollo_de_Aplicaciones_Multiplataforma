@@ -39,7 +39,7 @@ router.delete('/users/me/favorites/:id', authMiddleware.ensureAuthenticated, Use
 
 //Two users contact and start to living together old/young field living_with on User model
 router.put('/users/me/livingWith', authMiddleware.ensureAuthenticated, UserController.updateLivingWith);
-router.delete('/users/me/livingWith', authMiddleware.ensureAuthenticated, UserController.deleteLivingWith);
+router.delete('/users/me/livingWith/:id', authMiddleware.ensureAuthenticated, UserController.deleteLivingWith);
 
 //Admin validate users and active users
 router.put('/users/admin/validate/:id', authMiddleware.ensureAuthenticated, adminMiddleware.ensureRolAdmin, UserController.updateValidated);

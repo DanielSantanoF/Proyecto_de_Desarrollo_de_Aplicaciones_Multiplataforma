@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.fragment.app.DialogFragment;
 
 import com.dsantano.proyectodam.R;
+import com.dsantano.proyectodam.common.MyApp;
 import com.dsantano.proyectodam.models.users.User;
 import com.dsantano.proyectodam.retrofit.service.Service;
 import com.dsantano.proyectodam.retrofit.servicegenerators.TokenServiceGenerator;
@@ -53,8 +54,8 @@ public class ConfirmDeleteMeDialogFragment extends DialogFragment {
             public void onClick(DialogInterface dialog, int which) {
                 act = (Activity) ctx;
                 service = TokenServiceGenerator.createService(Service.class);
-                Call<ResponseBody> callPostNewTask =  service.deleteMe();
-                callPostNewTask.enqueue(new Callback<ResponseBody>() {
+                Call<ResponseBody> call =  service.deleteMe();
+                call.enqueue(new Callback<ResponseBody>() {
                     @Override
                     public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
                         Intent i = new Intent(act, LoginActivity.class);
@@ -64,7 +65,7 @@ public class ConfirmDeleteMeDialogFragment extends DialogFragment {
 
                     @Override
                     public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        Toast.makeText(act, "Error", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MyApp.getContext(), "Error", Toast.LENGTH_SHORT).show();
                     }
                 });
                 dialog.dismiss();

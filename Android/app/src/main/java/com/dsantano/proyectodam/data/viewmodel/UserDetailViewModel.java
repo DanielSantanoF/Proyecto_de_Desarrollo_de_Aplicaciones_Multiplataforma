@@ -38,8 +38,8 @@ public class UserDetailViewModel extends AndroidViewModel {
         userRepository.putLivingWith(userIdSended);
     }
 
-    public void deleteLivingWith(UserIdSended userIdSended){
-        userRepository.deleteLivingWith(userIdSended);
+    public void deleteLivingWith(String id){
+        userRepository.deleteLivingWith(id);
     }
 
 }

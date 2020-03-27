@@ -1,5 +1,6 @@
 # Proyecto DAM
 Api Rest en NodeJs con MongoDB y Mongoose para el Proyecto de Desarrollo de Aplicaciones Multiplataforma.
+* Se encuentra despleguada en la url `https://dsantanoproyectodam.herokuapp.com/`
 
 ***
 
@@ -84,7 +85,7 @@ dateOfBirth: fecha de nacimiento del usuario en formato "YYYY-MM-DD"
 | Comentarios | Petición para loguear un usuario |
 | Cabeceras   | `Content-Type: application/json` |
 | Cuerpo      | Username y contraseña |
-| Respuesta/s | 200 Ok => Devuelve username, role y JWT |
+| Respuesta/s | 200 Ok => Devuelve datos del login |
 
 
 #### Cuerpo y respuesta del Endpoint
@@ -100,7 +101,9 @@ dateOfBirth: fecha de nacimiento del usuario en formato "YYYY-MM-DD"
 {
     "username": "dsantano",
     "role": "ADMIN",
-    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ3MDgwODEzOTksInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.EiL8VkJGB3GOP43jrq8hgvBb6HKXGjyyP5MLMUoEP2o"
+    "type_user": "JOVEN",
+    "id": "5e7488bd454fe922eb5dc865",
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODUyOTY5MjY0MzgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.09__dBPFw4e1AgSky6ByhHA_nsyZgYzrhWmvhUo5dnM"
 }
 ```
 
@@ -176,27 +179,25 @@ dateOfBirth: fecha de nacimiento del usuario en formato "YYYY-MM-DD"
 #### Respuesta del Endpoint
 * Respuesta:
 ```json
-[
-    {
-        "validated": false,
-        "location_offered": null,
-        "favorite_users": [],
-        "_id": "5e7483914c15af1cedb81765",
-        "username": "dsantano4",
-        "email": "santano4@email.com",
-        "phone": "657464646",
-        "name": "Daniel Santano4",
-        "role": "USER",
-        "type_user": "JOVEN",
-        "password": "$2a$12$7izlzCaNS7RRQFm9TGf2Ke1SI8DY.JsOnrnepMwVrsvFuD0JdsMIm",
-        "date_of_birth": "1999-11-07T00:00:00.000Z",
-        "avatar": {
-            "_id": "5e7483914c15af1cedb81766",
-            "data": "imageData",
-            "contentType": "image/jpeg"
-        }
+{
+    "validated": false,
+    "location_offered": null,
+    "favorite_users": [],
+    "_id": "5e7483914c15af1cedb81765",
+    "username": "dsantano4",
+    "email": "santano4@email.com",
+    "phone": "657464646",
+    "name": "Daniel Santano4",
+    "role": "USER",
+    "type_user": "JOVEN",
+    "password": "$2a$12$7izlzCaNS7RRQFm9TGf2Ke1SI8DY.JsOnrnepMwVrsvFuD0JdsMIm",
+    "date_of_birth": "1999-11-07T00:00:00.000Z",
+    "avatar": {
+        "_id": "5e7483914c15af1cedb81766",
+        "data": "imageData",
+        "contentType": "image/jpeg"
     }
-]
+}
 ```
 
 ***

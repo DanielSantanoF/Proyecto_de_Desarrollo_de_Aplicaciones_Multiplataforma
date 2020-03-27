@@ -166,8 +166,7 @@ public class UserDetailActivity extends AppCompatActivity {
                 Toast.makeText(this, getResources().getString(R.string.living_with_updated), Toast.LENGTH_SHORT).show();
                 break;
             case R.id.action_delete_living_with:
-                UserIdSended userIdSended3 = new UserIdSended(userId);
-                userDetailViewModel.deleteLivingWith(userIdSended3);
+                userDetailViewModel.deleteLivingWith(userId);
                 Toast.makeText(this, getResources().getString(R.string.living_with_deleted), Toast.LENGTH_SHORT).show();
                 break;
         }

@@ -6,8 +6,7 @@
     android:name="com.dsantano.proyectodam.ui.locations.LocationFragmentList"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
     app:layoutManager="LinearLayoutManager"
-    tools:context=".ui.locations.LocationFragmentList"
+    android:background="@color/colorPrimary"
+    tools:context=".ui.locations.alllocations.LocationFragmentList"
     tools:listitem="@layout/fragment_location_list" />

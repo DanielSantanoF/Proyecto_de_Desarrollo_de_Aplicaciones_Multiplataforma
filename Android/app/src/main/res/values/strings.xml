@@ -85,4 +85,26 @@
     <string name="action_update_service">Editar Servicio</string>
     <string name="edit_service_title">Editar Servicio</string>
     <string name="edit_service_body">Indique los nuevos datos del servicio</string>
+    <string name="action_my_location">Ver tu localización ofrecida</string>
+    <string name="action_view_all_locations">Ver todas las localizaciones</string>
+    <string name="txt_see_location">Ver localización</string>
+    <string name="txt_user_offering_location">Ver usuario ofreiendo localización</string>
+    <string name="action_delete_location">Eliminar localización ofrecida</string>
+    <string name="action_edit_location">Editar localización ofrecida</string>
+    <string name="action_add_location">Añadir mi localización ofrecida</string>
+    <string name="hint_country">País</string>
+    <string name="hint_iso_code">Código iso</string>
+    <string name="hint_city">Ciudad</string>
+    <string name="hint_street">Calle</string>
+    <string name="hint_postal_code">Código postal</string>
+    <string name="country_needed">Pais necesario</string>
+    <string name="iso_code_needed">Código iso necesario</string>
+    <string name="city_needed">Ciudad necesaria</string>
+    <string name="street_needed">Calle necesaria</string>
+    <string name="postal_code_needed">Código postal necesario</string>
+    <string name="new_location_title">Añadir localización</string>
+    <string name="new_location_body">Indica los datos de tu localización ofrecida</string>
+    <string name="edit_location_title">Editar localización</string>
+    <string name="edit_location_body">Indique los nuevos datos de la localización ofrecida</string>
+    <string name="location_deleted">Localización eliminada</string>
 </resources>

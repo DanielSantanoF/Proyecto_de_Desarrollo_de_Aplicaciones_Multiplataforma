@@ -275,7 +275,7 @@ let controller = {
                     next(new ErrorHandler(404, "User not found"));
                 }
                 else {
-                    User.findByIdAndUpdate(req.body.idUser,
+                    User.findByIdAndUpdate(req.params.id,
                         {
                             $unset: {
                                 living_with: 1

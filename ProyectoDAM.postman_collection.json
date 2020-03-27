@@ -321,7 +321,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5MDYzNDI0NDUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.D0wt9SQj31XvxS5JSQbQmy5RT_UEySCQ3WMZQTLEoKA",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODUyOTY5MjY0MzgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.09__dBPFw4e1AgSky6ByhHA_nsyZgYzrhWmvhUo5dnM",
 											"type": "string"
 										}
 									]
@@ -433,24 +433,15 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5MDYzNDI0NDUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.D0wt9SQj31XvxS5JSQbQmy5RT_UEySCQ3WMZQTLEoKA",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODUyOTY5MjY0MzgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.09__dBPFw4e1AgSky6ByhHA_nsyZgYzrhWmvhUo5dnM",
 											"type": "string"
 										}
 									]
 								},
 								"method": "DELETE",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"idUser\": \"5e7483854c15af1cedb81763\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
-									"raw": "localhost:3000/api/users/me/livingWith",
+									"raw": "localhost:3000/api/users/me/livingWith/5e7483854c15af1cedb81763",
 									"host": [
 										"localhost"
 									],
@@ -459,7 +450,8 @@
 										"api",
 										"users",
 										"me",
-										"livingWith"
+										"livingWith",
+										"5e7483854c15af1cedb81763"
 									]
 								}
 							},
@@ -511,7 +503,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0Yjg3MzcxNGFhNzViMDFmZTA1M2UiLCJleHAiOjE1ODQ5NzQxMzUwNjYsInVzZXJuYW1lIjoiZHNhbnRhbm8xMjMifQ.L0HArIhehSPTWomOcAf_lfroapbAxmEdQ3wktBHos-w",
+											"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODUyMTU2NTQwNjUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.TLZaDAf7hX41xv1FTNQDlK2u0RE6Lmr5OuT6fY_6J-I",
 											"type": "string"
 										}
 									]
@@ -520,7 +512,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"idUser\": \"5e7483854c15af1cedb81763\"\n}",
+									"raw": "{\n\t\"idUser\": \"5e7a545e67756c6d5f57145a\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -618,7 +610,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5MDYzNDI0NDUsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.D0wt9SQj31XvxS5JSQbQmy5RT_UEySCQ3WMZQTLEoKA",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODUyOTY5MjY0MzgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.09__dBPFw4e1AgSky6ByhHA_nsyZgYzrhWmvhUo5dnM",
 									"type": "string"
 								}
 							]
@@ -647,7 +639,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTcwZWY1ZDQzYjFlMTFjODY5Zjg1ZWIiLCJleHAiOjE1ODQ0NTk3Mzk2OTMsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.v7K1tkSE7RL8PzxCUxMFXlG2cWntSlSjUTrRr0z-cHQ",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODUwODI0MDY1MTYsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.ALiEA1ofc7Kot5XsF7RYIs7LqE_wnmcI8RQQ662-lbk",
 									"type": "string"
 								}
 							]
@@ -655,7 +647,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/users/5e70ef5d43b1e11c869f85eb",
+							"raw": "localhost:3000/api/users/5e7488bd454fe922eb5dc865",
 							"host": [
 								"localhost"
 							],
@@ -663,7 +655,7 @@
 							"path": [
 								"api",
 								"users",
-								"5e70ef5d43b1e11c869f85eb"
+								"5e7488bd454fe922eb5dc865"
 							]
 						}
 					},
@@ -889,7 +881,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ2OTkyNzUzNjgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.9KkATp7iksDLCALot0uLmiBIyJcjzIdOU-tj79qTm98",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODUwNjc1Mjc4MTgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.KS5YnQ42b4AGb0KDiu1yF-TMykSoOa2biX6qcAD9JrI",
 									"type": "string"
 								}
 							]
@@ -994,7 +986,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODM5MTRjMTVhZjFjZWRiODE3NjUiLCJleHAiOjE1ODQ5NzA1OTMxOTYsInVzZXJuYW1lIjoiZHNhbnRhbm80In0.qdiH4HDUrF6YvsLvEBOhju_qXnNCDmk-ZvFShQK6EwM",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODM4NTRjMTVhZjFjZWRiODE3NjMiLCJleHAiOjE1ODUwNjY1MjEwODQsInVzZXJuYW1lIjoidXNlclVwZGF0ZWRGcm9tQW5ndWxhciJ9.em6QBt5cbLs8eQt1zsafX_qpY9ippElhXDwwW_LYkl4",
 									"type": "string"
 								}
 							]
@@ -1003,7 +995,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"country\": \"España44\",\n\t\"isoCode\": \"ES\",\n\t\"city\": \"Sevilla\",\n\t\"street\": \"Ramon y Cajal\",\n\t\"postalCode\": \"41011\"\n}",
+							"raw": "{\n\t\"country\": \"España\",\n\t\"isoCode\": \"ES\",\n\t\"city\": \"Sevilla\",\n\t\"street\": \"Ramon y Cajal\",\n\t\"postalCode\": \"41011\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -1032,7 +1024,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODQ5ODY4MjM3MjQsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.VtnZ4aj4KSpmNdJzSycFQH-e7GGxhlkNnlxiKyME-_w",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODUyOTY5MjY0MzgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.09__dBPFw4e1AgSky6ByhHA_nsyZgYzrhWmvhUo5dnM",
 									"type": "string"
 								}
 							]
@@ -1061,7 +1053,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0Yjg3MzcxNGFhNzViMDFmZTA1M2UiLCJleHAiOjE1ODQ5NzQxMzUwNjYsInVzZXJuYW1lIjoiZHNhbnRhbm8xMjMifQ.L0HArIhehSPTWomOcAf_lfroapbAxmEdQ3wktBHos-w",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1ZTc0ODhiZDQ1NGZlOTIyZWI1ZGM4NjUiLCJleHAiOjE1ODUyOTY5MjY0MzgsInVzZXJuYW1lIjoiZHNhbnRhbm8ifQ.09__dBPFw4e1AgSky6ByhHA_nsyZgYzrhWmvhUo5dnM",
 									"type": "string"
 								}
 							]
@@ -1069,7 +1061,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/locations/5e74b21815a67452a75f9963",
+							"raw": "localhost:3000/api/locations/5e7a3637a75f5d40d8e9d71d",
 							"host": [
 								"localhost"
 							],
@@ -1077,7 +1069,7 @@
 							"path": [
 								"api",
 								"locations",
-								"5e74b21815a67452a75f9963"
+								"5e7a3637a75f5d40d8e9d71d"
 							]
 						}
 					},

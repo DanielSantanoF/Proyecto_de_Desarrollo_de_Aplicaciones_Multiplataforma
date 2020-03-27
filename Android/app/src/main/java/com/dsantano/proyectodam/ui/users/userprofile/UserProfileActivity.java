@@ -252,8 +252,7 @@ public class UserProfileActivity extends AppCompatActivity {
                 break;
             case R.id.action_delete_living_with_profile:
                 if(userLoaded.getLivingWith() != null){
-                    UserIdSended userIdSended = new UserIdSended(userLoaded.getLivingWith());
-                    userMeViewModel.deleteLivingWith(userIdSended);
+                    userMeViewModel.deleteLivingWith(userLoaded.getLivingWith());
                     Toast.makeText(this, getResources().getString(R.string.living_with_deleted), Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(this, getResources().getString(R.string.actually_not_living_with), Toast.LENGTH_SHORT).show();

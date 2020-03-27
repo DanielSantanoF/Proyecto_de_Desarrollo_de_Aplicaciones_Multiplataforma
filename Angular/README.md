@@ -1,15 +1,7 @@
-# Proyecto DAM
-
-
-####Key Features Include:
-* LTR/RTL Support
-* Angular 2
-* Material design
-* AoT compilation
-* Fully responsive (Mobile, Tablet, Desktop)
-* Well documented (Both online and offline)
-* Easy to customise
-* Language translation
+# Proyecto_de_Desarrollo_de_Aplicaciones_Multiplataforma_Angular
+Aplicación de Angular de administración del proyecto, solo tienen acceso al hacer login los usuarios que sean administradores, por lo tanto es una aplicación web totalmente de gestión
+* Los datos de firebase se encuentran en `/src/environments/environment.ts` son necesarios para poder usar la aplicación
+* Esta aplicación se encuentra disponible mediante el hosting de firebase => [Ver aplicación](https://url "proyectoDAM")
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.32.3.
 

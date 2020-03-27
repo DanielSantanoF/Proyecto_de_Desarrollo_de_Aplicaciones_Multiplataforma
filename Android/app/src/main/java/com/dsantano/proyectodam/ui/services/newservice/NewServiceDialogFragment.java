@@ -17,6 +17,7 @@ import android.widget.Toast;
 import androidx.fragment.app.DialogFragment;
 
 import com.dsantano.proyectodam.R;
+import com.dsantano.proyectodam.common.MyApp;
 import com.dsantano.proyectodam.models.services.NewServiceCreated;
 import com.dsantano.proyectodam.models.services.ServiceDetail;
 import com.dsantano.proyectodam.models.services.ServiceSended;
@@ -120,29 +121,29 @@ public class NewServiceDialogFragment extends DialogFragment {
                     act = (Activity) ctx;
                     service = TokenServiceGenerator.createService(Service.class);
                     if(editando) {
-                        Call<ServiceDetail> callPostNewTask = service.putServiceById(serviceId, serviceSended);
-                        callPostNewTask.enqueue(new Callback<ServiceDetail>() {
+                        Call<ServiceDetail> call = service.putServiceById(serviceId, serviceSended);
+                        call.enqueue(new Callback<ServiceDetail>() {
                             @Override
                             public void onResponse(Call<ServiceDetail> call, Response<ServiceDetail> response) {
-                                Toast.makeText(act, getResources().getString(R.string.correct_update), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MyApp.getContext(), getResources().getString(R.string.correct_update), Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(Call<ServiceDetail> call, Throwable t) {
-                                Toast.makeText(act, getResources().getString(R.string.error_in_update), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MyApp.getContext(), getResources().getString(R.string.error_in_update), Toast.LENGTH_SHORT).show();
                             }
                         });
                     } else {
-                        Call<NewServiceCreated> callPostNewTask = service.postNewService(serviceSended);
-                        callPostNewTask.enqueue(new Callback<NewServiceCreated>() {
+                        Call<NewServiceCreated> call2 = service.postNewService(serviceSended);
+                        call2.enqueue(new Callback<NewServiceCreated>() {
                             @Override
                             public void onResponse(Call<NewServiceCreated> call, Response<NewServiceCreated> response) {
-                                Toast.makeText(act, getResources().getString(R.string.create_correct), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MyApp.getContext(), getResources().getString(R.string.create_correct), Toast.LENGTH_SHORT).show();
                             }
 
                             @Override
                             public void onFailure(Call<NewServiceCreated> call, Throwable t) {
-                                Toast.makeText(act, getResources().getString(R.string.error_in_create), Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MyApp.getContext(), getResources().getString(R.string.error_in_create), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

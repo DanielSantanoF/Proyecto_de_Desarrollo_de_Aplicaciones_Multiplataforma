@@ -28,7 +28,7 @@ import com.dsantano.proyectodam.ui.users.userdetail.UserDetailActivity;
 
 public class ServiceDetailActivity extends AppCompatActivity {
 
-    String serviceId, userLoggedId;
+    String serviceId, userLoggedId, userProperatyId;
     ImageView ivType;
     TextView txtTitle, txtType, txtDescription;
     ImageButton btnUserOffering;
@@ -87,7 +87,11 @@ public class ServiceDetailActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.service_detail_menu, menu);
+        userLoggedId = getSharedPreferences(Constants.APP_SETTINGS_FILE, Context.MODE_PRIVATE).getString(Constants.SHARED_PREFERENCES_USER_PERSONAL_ID, null);
+        userProperatyId = getSharedPreferences(Constants.APP_SETTINGS_FILE, Context.MODE_PRIVATE).getString(Constants.SHARED_PREFERENCES_SERVICE_USER_ID, null);
+        if(userLoggedId.equals(userProperatyId)) {
+            getMenuInflater().inflate(R.menu.service_detail_menu, menu);
+        }
         return true;
     }
 
@@ -95,14 +99,9 @@ public class ServiceDetailActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_delete_service:
-                userLoggedId = getSharedPreferences(Constants.APP_SETTINGS_FILE, Context.MODE_PRIVATE).getString(Constants.SHARED_PREFERENCES_USER_PERSONAL_ID, null);
-                if(userLoggedId.equals(serviceLoaded.getUserOfferingService().getId())){
-                    serviceDetailViewModel.deleteService();
-                    Toast.makeText(this, getResources().getString(R.string.service_deleted), Toast.LENGTH_SHORT).show();
-                    finish();
-                } else {
-                    Toast.makeText(this, getResources().getString(R.string.not_service_properati), Toast.LENGTH_SHORT).show();
-                }
+                serviceDetailViewModel.deleteService();
+                Toast.makeText(this, getResources().getString(R.string.service_deleted), Toast.LENGTH_SHORT).show();
+                finish();
                 break;
             case R.id.action_update_service:
                 NewServiceDialogFragment dialog = new NewServiceDialogFragment(this, getResources().getString(R.string.edit_service_title), getResources().getString(R.string.edit_service_body), true, serviceLoaded.getTitle(), serviceLoaded.getDescription(), serviceLoaded.getId());

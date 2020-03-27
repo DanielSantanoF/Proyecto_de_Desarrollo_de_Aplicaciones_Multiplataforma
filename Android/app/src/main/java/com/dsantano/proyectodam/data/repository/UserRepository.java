@@ -235,8 +235,8 @@ public class UserRepository {
         });
     }
 
-    public void deleteLivingWith(UserIdSended userIdSended){
-        Call<User> call = service.deleteLivingWith(userIdSended);
+    public void deleteLivingWith(String id){
+        Call<User> call = service.deleteLivingWith(id);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {

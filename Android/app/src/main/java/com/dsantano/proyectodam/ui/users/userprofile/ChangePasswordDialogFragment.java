@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.fragment.app.DialogFragment;
 
 import com.dsantano.proyectodam.R;
+import com.dsantano.proyectodam.common.MyApp;
 import com.dsantano.proyectodam.models.users.ChangePasswordSended;
 import com.dsantano.proyectodam.models.users.User;
 import com.dsantano.proyectodam.retrofit.service.Service;
@@ -68,16 +70,18 @@ public class ChangePasswordDialogFragment extends DialogFragment {
                 } else {
                     act = (Activity) ctx;
                     service = TokenServiceGenerator.createService(Service.class);
-                    Call<User> callPostNewTask =  service.putPassword(changePasswordSended);
-                    callPostNewTask.enqueue(new Callback<User>() {
+                    Call<User> call =  service.putPassword(changePasswordSended);
+                    call.enqueue(new Callback<User>() {
                         @Override
                         public void onResponse(Call<User> call, Response<User> response) {
-                            Toast.makeText(act, getResources().getString(R.string.correct_update), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getActivity(), getResources().getString(R.string.correct_update), Toast.LENGTH_SHORT).show();
+                            Log.d("changePassword", "changed");
                         }
 
                         @Override
                         public void onFailure(Call<User> call, Throwable t) {
-                            Toast.makeText(act, getResources().getString(R.string.error_in_update), Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(getActivity(), getResources().getString(R.string.error_in_update), Toast.LENGTH_SHORT).show();
+                            Log.d("changePassword", "onFailure: " + t.getMessage());
                         }
                     });
                     dialog.dismiss();

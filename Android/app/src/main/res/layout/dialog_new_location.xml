@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <EditText
+        android:id="@+id/editTextCountryNewLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_country"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextIsoCodeNewLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_iso_code"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextCityNewLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_city"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextStreetNewLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_street"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editTextPostalCodeNewLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_postal_code"
+        android:inputType="textPersonName" />
+
+</LinearLayout>
